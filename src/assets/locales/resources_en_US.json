@@ -1,6 +1,14 @@
 {
-  "skyux_some_key": {
-    "_description": "",
-    "message": ""
+  "skyux_inline_form_cancel": {
+    "_description": "Text for cancel button",
+    "message": "Cancel"
+  },
+  "skyux_inline_form_delete": {
+    "_description": "Text for delete button",
+    "message": "Delete"
+  },
+  "skyux_inline_form_done": {
+    "_description": "Text for done button",
+    "message": "Done"
   }
 }

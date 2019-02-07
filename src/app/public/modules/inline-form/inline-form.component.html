@@ -1,0 +1,25 @@
+<div class="sky-inline-form sky-shadow">
+  <div class="sky-inline-form-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="sky-inline-form-footer">
+    <button
+      class="sky-btn sky-btn-primary"
+      (click)="onDoneClick()"
+    >
+      {{ 'skyux_inline_form_done' | skyLibResources }}
+    </button>
+    <button *ngIf="showDeleteButton"
+      class="sky-btn sky-btn-secondary"
+      (click)="onDeleteClick()"
+    >
+    {{ 'skyux_inline_form_delete' | skyLibResources }}
+    </button>
+    <button
+      class="sky-btn sky-btn-link"
+      (click)="onCancelClick()"
+    >
+    {{ 'skyux_inline_form_cancel' | skyLibResources }}
+    </button>
+  </div>
+</div>

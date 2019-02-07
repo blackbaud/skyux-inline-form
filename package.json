@@ -1,7 +1,7 @@
 {
-  "name": "@skyux/sample",
+  "name": "@skyux/inline-form",
   "version": "3.0.0-alpha.x",
-  "description": "SKY UX Sample",
+  "description": "SKY UX Inline Form",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
   "engines": {
@@ -19,12 +19,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackbaud/skyux-sample.git"
+    "url": "git+https://github.com/blackbaud/skyux-inline-form.git"
   },
   "bugs": {
-    "url": "https://github.com/blackbaud/skyux-sample/issues"
+    "url": "https://github.com/blackbaud/skyux-inline-form/issues"
   },
-  "homepage": "https://github.com/blackbaud/skyux-sample#readme",
+  "homepage": "https://github.com/blackbaud/skyux-inline-form#readme",
   "peerDependencies": {},
   "dependencies": {},
   "devDependencies": {
@@ -38,9 +38,9 @@
     "@angular/platform-browser": "4.3.6",
     "@angular/platform-browser-dynamic": "4.3.6",
     "@angular/router": "4.3.6",
-    "@blackbaud/skyux": "2.26.0",
-    "@blackbaud/skyux-builder": "1.24.0",
-    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.0",
+    "@blackbaud/skyux": "2.40.0",
+    "@blackbaud/skyux-builder": "1.31.1",
+    "@skyux-sdk/builder-plugin-skyux": "1.0.0-rc.6",
     "core-js": "2.4.1",
     "rxjs": "5.4.3",
     "ts-node": "3.0.4",

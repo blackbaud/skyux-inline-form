@@ -1,0 +1,33 @@
+<div class="sky-inline-form-demo">
+  <sky-inline-form
+    [showDeleteButton]="showDeleteButton"
+    (closed)="closed($event)"
+  >
+    <div class="sky-form-group">
+      <label
+        class="sky-control-label"
+        for="demo-input-1"
+      >
+        Something
+      </label>
+      <input
+        id="demo-input-1"
+        class="sky-form-control"
+        type="text"
+      />
+    </div>
+    <div class="sky-form-group">
+      <label
+        class="sky-control-label"
+        for="demo-input-2"
+      >
+        Something else
+      </label>
+      <input
+        id="demo-input-2"
+        class="sky-form-control"
+        type="text"
+      />
+    </div>
+  </sky-inline-form>
+</div>
