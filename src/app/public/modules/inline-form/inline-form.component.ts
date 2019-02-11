@@ -81,8 +81,8 @@ export class SkyInlineFormComponent implements OnInit {
       default:
       case SkyInlineFormType.DoneCancel:
         Observable.zip(
-          this.resourcesService.getString('skyux_inline_form_done'),
-          this.resourcesService.getString('skyux_inline_form_cancel')
+          this.resourcesService.getString('skyux_inline_form_button_done'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
         )
           .subscribe((values: any) => {
             emitter.next([
@@ -102,8 +102,8 @@ export class SkyInlineFormComponent implements OnInit {
 
       case SkyInlineFormType.SaveCancel:
         Observable.zip(
-          this.resourcesService.getString('skyux_inline_form_save'),
-          this.resourcesService.getString('skyux_inline_form_cancel')
+          this.resourcesService.getString('skyux_inline_form_button_save'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
         ).subscribe((values: any) => {
           emitter.next([
             {
@@ -122,9 +122,9 @@ export class SkyInlineFormComponent implements OnInit {
 
       case SkyInlineFormType.DoneDeleteCancel:
         Observable.zip(
-          this.resourcesService.getString('skyux_inline_form_done'),
-          this.resourcesService.getString('skyux_inline_form_delete'),
-          this.resourcesService.getString('skyux_inline_form_cancel')
+          this.resourcesService.getString('skyux_inline_form_button_done'),
+          this.resourcesService.getString('skyux_inline_form_button_delete'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
 
         )
           .subscribe((values: any) => {
@@ -150,9 +150,9 @@ export class SkyInlineFormComponent implements OnInit {
 
       case SkyInlineFormType.SaveDeleteCancel:
         Observable.zip(
-          this.resourcesService.getString('skyux_inline_form_save'),
-          this.resourcesService.getString('skyux_inline_form_delete'),
-          this.resourcesService.getString('skyux_inline_form_cancel')
+          this.resourcesService.getString('skyux_inline_form_button_save'),
+          this.resourcesService.getString('skyux_inline_form_button_delete'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
 
         )
           .subscribe((values: any) => {
