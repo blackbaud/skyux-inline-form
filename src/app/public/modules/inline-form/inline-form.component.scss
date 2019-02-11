@@ -8,5 +8,9 @@
 
   .sky-inline-form-footer {
     margin-top: $sky-margin-stacked-default;
+
+    button {
+      margin: 0 5px 0 0;
+    }
   }
 }

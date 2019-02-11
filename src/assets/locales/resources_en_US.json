@@ -10,5 +10,9 @@
   "skyux_inline_form_done": {
     "_description": "Text for done button",
     "message": "Done"
+  },
+  "skyux_inline_form_save": {
+    "_description": "Text for save button",
+    "message": "Save"
   }
 }

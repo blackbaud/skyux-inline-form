@@ -19,23 +19,68 @@ import {
 import {
   SkyInlineFormModule
 } from './inline-form.module';
+import { SkyInlineFormType } from './types';
 
-function getSaveButton(fixture: ComponentFixture<any>) {
+function getPrimaryButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
     By.css('.sky-inline-form-footer .sky-btn-primary')
   );
 }
 
-function getDeleteButton(fixture: ComponentFixture<any>) {
+function getSecondaryButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
     By.css('.sky-inline-form-footer .sky-btn-secondary')
   );
 }
 
-function getCancelButton(fixture: ComponentFixture<any>) {
+function getLinkButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
     By.css('.sky-inline-form-footer .sky-btn-link')
   );
+}
+
+function verifyDoneButtonisDefined(fixture: ComponentFixture<any>, isDefined: boolean) {
+  const doneButton = getPrimaryButton(fixture);
+  if (isDefined) {
+    expect(doneButton).not.toBeNull();
+    expect(doneButton.nativeElement.textContent).toContain('Done');
+  } else {
+    if (doneButton) {
+      expect(doneButton.nativeElement.textContent).not.toContain('Done');
+    }
+  }
+}
+
+function verifySaveButtonisDefined(fixture: ComponentFixture<any>, isDefined: boolean) {
+  const saveButton = getPrimaryButton(fixture);
+  if (isDefined) {
+    expect(saveButton).not.toBeNull();
+    expect(saveButton.nativeElement.textContent).toContain('Save');
+  } else {
+    if (saveButton) {
+      expect(saveButton.nativeElement.textContent).not.toContain('Save');
+    }
+  }
+}
+
+function verifyDeleteButtonIsDefined(fixture: ComponentFixture<SkyInlineFormFixtureComponent>, isDefined: boolean) {
+  const deleteButton = getSecondaryButton(fixture);
+  if (isDefined) {
+    expect(deleteButton).not.toBeNull();
+    expect(deleteButton.nativeElement.textContent).toContain('Delete');
+  } else {
+    expect(deleteButton).toBeNull();
+  }
+}
+
+function verifyCancelButtonIsDefined(fixture: ComponentFixture<SkyInlineFormFixtureComponent>, isDefined: boolean) {
+  const cancelButton = getLinkButton(fixture);
+  if (isDefined) {
+    expect(cancelButton).not.toBeNull();
+    expect(cancelButton.nativeElement.textContent).toContain('Cancel');
+  } else {
+    expect(cancelButton).toBeNull();
+  }
 }
 
 describe('Inline form component', () => {
@@ -56,37 +101,69 @@ describe('Inline form component', () => {
     component = fixture.componentInstance;
   });
 
-  it('should hide delete button by default', () => {
-    const deleteButton = getDeleteButton(fixture);
-
-    expect(deleteButton).toBeNull();
-  });
-
-  it('should show delete button when showDeleteButton is set to true', () => {
-    component.showDeleteButton = true;
+  it('should show Done/Cancel buttons as default if no SkyInlineFormConfig is defined', () => {
     fixture.detectChanges();
 
-    const deleteButton = getDeleteButton(fixture);
-
-    expect(deleteButton).not.toBeNull();
+    verifyDoneButtonisDefined(fixture, true);
+    verifyCancelButtonIsDefined(fixture, true);
+    verifySaveButtonisDefined(fixture, false);
+    verifyDeleteButtonIsDefined(fixture, false);
   });
 
-  it('should emit when save button is clicked', () => {
-    const spy = spyOn(component, 'closed');
+  it('should show delete Done/Delete/Cancel buttons when SkyInlineFormConfig is defined', () => {
+    component.config = {
+      type: SkyInlineFormType.DoneDeleteCancel
+    };
+    fixture.detectChanges();
 
-    const saveButton = getSaveButton(fixture);
+    verifyDoneButtonisDefined(fixture, true);
+    verifyDeleteButtonIsDefined(fixture, true);
+    verifyCancelButtonIsDefined(fixture, true);
+    verifySaveButtonisDefined(fixture, false);
+  });
+
+  it('should show delete Save/Delete/Cancel buttons when SkyInlineFormConfig is defined', () => {
+    component.config = {
+      type: SkyInlineFormType.SaveDeleteCancel
+    };
+    fixture.detectChanges();
+
+    verifySaveButtonisDefined(fixture, true);
+    verifyDeleteButtonIsDefined(fixture, true);
+    verifyCancelButtonIsDefined(fixture, true);
+    verifyDoneButtonisDefined(fixture, false);
+  });
+
+  it('should show delete Save/Cancel buttons when SkyInlineFormConfig is defined', () => {
+    component.config = {
+      type: SkyInlineFormType.SaveCancel
+    };
+    fixture.detectChanges();
+
+    verifySaveButtonisDefined(fixture, true);
+    verifyCancelButtonIsDefined(fixture, true);
+    verifyDeleteButtonIsDefined(fixture, false);
+    verifyDoneButtonisDefined(fixture, false);
+  });
+
+  it('should emit when done button is clicked', () => {
+    fixture.detectChanges();
+    const spy = spyOn(component, 'closed');
+    const saveButton = getPrimaryButton(fixture);
+
     saveButton.nativeElement.click();
     fixture.detectChanges();
 
     expect(spy).toHaveBeenCalledWith({
-      reason: 'save'
+      reason: 'done'
     });
   });
 
   it('should emit when cancel button is clicked', () => {
+    fixture.detectChanges();
     const spy = spyOn(component, 'closed');
+    const cancelButton = getLinkButton(fixture);
 
-    const cancelButton = getCancelButton(fixture);
     cancelButton.nativeElement.click();
     fixture.detectChanges();
 
@@ -96,17 +173,61 @@ describe('Inline form component', () => {
   });
 
   it('should emit when delete button is clicked', () => {
-    component.showDeleteButton = true;
+    component.config = {
+      type: SkyInlineFormType.SaveDeleteCancel
+    };
     fixture.detectChanges();
-
     const spy = spyOn(component, 'closed');
+    const deleteButton = getSecondaryButton(fixture);
 
-    const deleteButton = getDeleteButton(fixture);
     deleteButton.nativeElement.click();
     fixture.detectChanges();
 
     expect(spy).toHaveBeenCalledWith({
       reason: 'delete'
+    });
+  });
+
+  it('should emit when save button is clicked', () => {
+    component.config = {
+      type: SkyInlineFormType.SaveCancel
+    };
+    fixture.detectChanges();
+    const spy = spyOn(component, 'closed');
+    const saveButton = getPrimaryButton(fixture);
+
+    saveButton.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalledWith({
+      reason: 'save'
+    });
+  });
+
+  it('should properly set up custom buttons', () => {
+    component.config = {
+      type: SkyInlineFormType.Custom,
+      buttons: [
+        { action: 'CUSTOM_ACTION_1', text: 'CUSTOM_TEXT_1', styleType: 'primary' },
+        { action: 'CUSTOM_ACTION_2', text: 'CUSTOM_TEXT_2', styleType: 'secondary' },
+        { action: 'CUSTOM_ACTION_3', text: 'CUSTOM_TEXT_3', styleType: 'link' }
+      ]
+    };
+    fixture.detectChanges();
+    const spy = spyOn(component, 'closed');
+    const button1 = getPrimaryButton(fixture);
+    const button2 = getSecondaryButton(fixture);
+    const button3 = getLinkButton(fixture);
+
+    // Expect first button has custom text and emits properly.
+    button1.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(button1.nativeElement.textContent).toContain('CUSTOM_TEXT_1');
+    expect(button2.nativeElement.textContent).toContain('CUSTOM_TEXT_2');
+    expect(button3.nativeElement.textContent).toContain('CUSTOM_TEXT_3');
+    expect(spy).toHaveBeenCalledWith({
+      reason: 'CUSTOM_ACTION_1'
     });
   });
 

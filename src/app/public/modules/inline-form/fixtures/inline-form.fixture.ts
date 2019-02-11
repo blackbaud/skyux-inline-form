@@ -3,8 +3,9 @@ import {
 } from '@angular/core';
 
 import {
-  SkyInlineFormCloseArgs
-} from '../inline-form-close-args';
+  SkyInlineFormCloseArgs,
+  SkyInlineFormConfig
+} from '../types';
 
 @Component({
   selector: 'sky-inline-form-fixture',
@@ -12,7 +13,7 @@ import {
 })
 export class SkyInlineFormFixtureComponent {
 
-  public showDeleteButton = false;
+  public config: SkyInlineFormConfig;
 
   public closed(event: SkyInlineFormCloseArgs) {
 
