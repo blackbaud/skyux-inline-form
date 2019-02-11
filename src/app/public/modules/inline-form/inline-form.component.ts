@@ -136,7 +136,7 @@ export class SkyInlineFormComponent implements OnInit {
               },
               {
                 text: values[1],
-                styleType: 'secondary',
+                styleType: 'default',
                 action: 'delete'
               },
               {
@@ -164,7 +164,7 @@ export class SkyInlineFormComponent implements OnInit {
               },
               {
                 text: values[1],
-                styleType: 'secondary',
+                styleType: 'default',
                 action: 'delete'
               },
               {

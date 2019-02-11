@@ -27,9 +27,9 @@ function getPrimaryButton(fixture: ComponentFixture<any>) {
   );
 }
 
-function getSecondaryButton(fixture: ComponentFixture<any>) {
+function getDefaultButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
-    By.css('.sky-inline-form-footer .sky-btn-secondary')
+    By.css('.sky-inline-form-footer .sky-btn-default')
   );
 }
 
@@ -64,7 +64,7 @@ function verifySaveButtonisDefined(fixture: ComponentFixture<any>, isDefined: bo
 }
 
 function verifyDeleteButtonIsDefined(fixture: ComponentFixture<SkyInlineFormFixtureComponent>, isDefined: boolean) {
-  const deleteButton = getSecondaryButton(fixture);
+  const deleteButton = getDefaultButton(fixture);
   if (isDefined) {
     expect(deleteButton).not.toBeNull();
     expect(deleteButton.nativeElement.textContent).toContain('Delete');
@@ -178,7 +178,7 @@ describe('Inline form component', () => {
     };
     fixture.detectChanges();
     const spy = spyOn(component, 'closed');
-    const deleteButton = getSecondaryButton(fixture);
+    const deleteButton = getDefaultButton(fixture);
 
     deleteButton.nativeElement.click();
     fixture.detectChanges();
@@ -209,14 +209,14 @@ describe('Inline form component', () => {
       type: SkyInlineFormType.Custom,
       buttons: [
         { action: 'CUSTOM_ACTION_1', text: 'CUSTOM_TEXT_1', styleType: 'primary' },
-        { action: 'CUSTOM_ACTION_2', text: 'CUSTOM_TEXT_2', styleType: 'secondary' },
+        { action: 'CUSTOM_ACTION_2', text: 'CUSTOM_TEXT_2', styleType: 'default' },
         { action: 'CUSTOM_ACTION_3', text: 'CUSTOM_TEXT_3', styleType: 'link' }
       ]
     };
     fixture.detectChanges();
     const spy = spyOn(component, 'closed');
     const button1 = getPrimaryButton(fixture);
-    const button2 = getSecondaryButton(fixture);
+    const button2 = getDefaultButton(fixture);
     const button3 = getLinkButton(fixture);
 
     // Expect first button has custom text and emits properly.

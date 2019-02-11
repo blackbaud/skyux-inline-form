@@ -24,7 +24,7 @@ export class SkyInlineFormDemoComponent {
     type: SkyInlineFormType.Custom,
     buttons: [
       { action: 'save', text: 'Do it!', styleType: 'primary' },
-      { action: 'done', text: 'Don\'t let your dreams be dreams.', styleType: 'secondary' },
+      { action: 'done', text: 'Don\'t let your dreams be dreams.', styleType: 'default' },
       { action: 'cancel', text: 'Yesterday, you said tomorrow.', styleType: 'link' },
       { action: 'save', text: 'Just do it! ', styleType: 'primary' }
     ]
