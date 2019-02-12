@@ -8,6 +8,10 @@ import {
   SkyInlineFormType
 } from '../../public/modules/inline-form/types';
 
+import {
+  SkyTileDemoTileComponent
+} from './inline-form-demo-tile.component';
+
 @Component({
   selector: 'sky-inline-form-demo',
   templateUrl: './inline-form-demo.component.html',
@@ -28,6 +32,35 @@ export class SkyInlineFormDemoComponent {
       { action: 'cancel', text: 'Yesterday, you said tomorrow.', styleType: 'link' },
       { action: 'save', text: 'Just do it! ', styleType: 'primary' }
     ]
+  };
+
+  public dashboardConfig = {
+    tiles: [
+      {
+        id: 'tile1',
+        componentType: SkyTileDemoTileComponent
+      }
+    ],
+    layout: {
+      singleColumn: {
+        tiles: [
+          {
+            id: 'tile1',
+            isCollapsed: false
+          }
+        ]
+      },
+      multiColumn: [
+        {
+          tiles: [
+            {
+              id: 'tile1',
+              isCollapsed: false
+            }
+          ]
+        }
+      ]
+    }
   };
 
   public closed(event: any) {

@@ -106,4 +106,68 @@
       />
     </div>
   </sky-inline-form>
+
+  <h2>Repeater example</h2>
+
+  <sky-repeater
+    [expandMode]="none"
+  >
+    <sky-repeater-item
+      [isExpanded]="false"
+    >
+      <sky-repeater-item-title>
+        Repeater item 1
+      </sky-repeater-item-title>
+    </sky-repeater-item>
+    <sky-repeater-item
+      [isExpanded]="false"
+    >
+      <sky-repeater-item-content>
+          <sky-inline-form>
+            <div class="sky-form-group">
+              <label
+                class="sky-control-label"
+                for="demo-input-3"
+              >
+                Something
+              </label>
+              <input
+                id="demo-input-3"
+                class="sky-form-control"
+                type="text"
+              />
+            </div>
+            <div class="sky-form-group">
+              <label
+                class="sky-control-label"
+                for="demo-input-4"
+              >
+                Something else
+              </label>
+              <input
+                id="demo-input-4"
+                class="sky-form-control"
+                type="text"
+              />
+            </div>
+          </sky-inline-form>
+      </sky-repeater-item-content>
+    </sky-repeater-item>
+    <sky-repeater-item
+      [isExpanded]="false"
+    >
+      <sky-repeater-item-title>
+        Repeater item 2
+      </sky-repeater-item-title>
+    </sky-repeater-item>
+  </sky-repeater>
+
+  <h2>Tile section example</h2>
+
+  <sky-tile-dashboard
+    [(config)]="dashboardConfig"
+  >
+  </sky-tile-dashboard>
+
+
 </div>
