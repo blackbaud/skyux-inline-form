@@ -40,4 +40,34 @@ describe('Inline form', () => {
     });
   });
 
+  it('should match previous screenshot for repeaters', (done) => {
+    SkyHostBrowser.scrollTo('#inline-form-repeater');
+    expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
+      screenshotName: 'inline-form-repeater'
+    });
+  });
+
+  it('should match previous screenshot for repeaters (screen: xs)', (done) => {
+    SkyHostBrowser.setWindowBreakpoint('xs');
+    SkyHostBrowser.scrollTo('#inline-form-repeater');
+    expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
+      screenshotName: 'inline-form-repeater-xs'
+    });
+  });
+
+  it('should match previous screenshot for tile sections', (done) => {
+    SkyHostBrowser.scrollTo('#inline-form-tiles');
+    expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
+      screenshotName: 'inline-form-tiles'
+    });
+  });
+
+  it('should match previous screenshot for tile sections (screen: xs)', (done) => {
+    SkyHostBrowser.setWindowBreakpoint('xs');
+    SkyHostBrowser.scrollTo('#inline-form-tiles');
+    expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
+      screenshotName: 'inline-form-tiles-xs'
+    });
+  });
+
 });
