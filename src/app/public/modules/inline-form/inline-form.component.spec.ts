@@ -24,6 +24,10 @@ import {
   SkyInlineFormType
 } from './types';
 
+import {
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
+
 function getPrimaryButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
     By.css('.sky-inline-form-footer .sky-btn-primary')
@@ -97,6 +101,9 @@ describe('Inline form component', () => {
       ],
       imports: [
         SkyInlineFormModule
+      ],
+      providers: [
+        SkyInlineFormAdapterService
       ]
     });
 
@@ -232,6 +239,34 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'CUSTOM_ACTION_1'
     });
+  });
+
+  it('should focus the first focusable element when no autofocus is inside of content', () => {
+    component.showFormWithOutAutocomplete = true;
+    fixture.detectChanges();
+
+    expect(document.activeElement).toEqual(document.querySelector('#demo-input-3'));
+  });
+
+  it('should focus the autofocus element when there is one present', () => {
+    component.showFormWithAutocomplete = true;
+    fixture.detectChanges();
+
+    expect(document.activeElement).toEqual(document.querySelector('#demo-input-6'));
+  });
+
+  it('should focus the first element thats visible', () => {
+    component.showFormWithHiddenElements = true;
+    fixture.detectChanges();
+
+    expect(document.activeElement).toEqual(document.querySelector('#demo-input-8'));
+  });
+
+  it('should not move focus if there are no focusable elements in the form', () => {
+    component.showFormWithNoElements = true;
+    fixture.detectChanges();
+
+    expect(document.activeElement).toEqual(document.querySelector('#demo-input-1'));
   });
 
   it('should pass accessibility', async(() => {

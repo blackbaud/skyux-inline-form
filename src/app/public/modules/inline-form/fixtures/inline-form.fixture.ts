@@ -15,6 +15,14 @@ export class SkyInlineFormFixtureComponent {
 
   public config: SkyInlineFormConfig;
 
+  public showFormWithAutocomplete = false;
+
+  public showFormWithOutAutocomplete = false;
+
+  public showFormWithHiddenElements = false;
+
+  public showFormWithNoElements = false;
+
   public onClose(event: SkyInlineFormCloseArgs) {
 
   }
