@@ -5,7 +5,9 @@ import {
   Input,
   Output,
   Optional,
-  OnInit
+  OnInit,
+  OnDestroy,
+  ElementRef
 } from '@angular/core';
 
 import {
@@ -30,16 +32,20 @@ import {
   SkyInlineFormButtonConfig
 } from './types';
 
+import {
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
+
 @Component({
   selector: 'sky-inline-form',
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyInlineFormComponent implements OnInit {
+export class SkyInlineFormComponent implements OnInit, OnDestroy {
 
   @Output()
-  public closed = new EventEmitter<SkyInlineFormCloseArgs>();
+  public close = new EventEmitter<SkyInlineFormCloseArgs>();
 
   @Input()
   public showDeleteButton = false;
@@ -50,6 +56,8 @@ export class SkyInlineFormComponent implements OnInit {
   public buttons: SkyInlineFormButton[];
 
   constructor(
+    private adapter: SkyInlineFormAdapterService,
+    private elementRef: ElementRef,
     @Optional() private resourcesService: SkyLibResourcesService
   ) {}
 
@@ -61,14 +69,18 @@ export class SkyInlineFormComponent implements OnInit {
         this.buttons = buttons;
       });
     }
+    this.adapter.applyAutofocus(this.elementRef);
   }
 
-  public close(event: SkyInlineFormButton) {
+  public ngOnDestroy() {
+    this.close.complete();
+  }
+
+  public closeInlineForm(event: SkyInlineFormButton) {
     const args: SkyInlineFormCloseArgs = {
       reason: event.action
     };
-    this.closed.emit(args);
-    this.closed.complete();
+    this.close.emit(args);
   }
 
   private getPresetButtons(): Observable<SkyInlineFormButton[]> {

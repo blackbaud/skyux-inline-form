@@ -4,7 +4,7 @@
 
   <sky-inline-form
     id="inline-form-add"
-    (closed)="closed($event)"
+    (close)="onClose($event)"
   >
 
     <div class="sky-form-group">
@@ -40,7 +40,7 @@
   <sky-inline-form
     id="inline-form-edit"
     [config]="editConfig"
-    (closed)="closed($event)"
+    (close)="onClose($event)"
   >
 
     <div class="sky-form-group">
@@ -48,7 +48,7 @@
         class="sky-control-label"
         for="demo-input-3"
       >
-        Something
+        Title
       </label>
       <input
         id="demo-input-3"
@@ -61,7 +61,7 @@
         class="sky-control-label"
         for="demo-input-4"
       >
-        Something else
+        Note
       </label>
       <input
         id="demo-input-4"
@@ -76,7 +76,7 @@
   <sky-inline-form
     id="inline-form-edit"
     [config]="customConfig"
-    (closed)="closed($event)"
+    (close)="onClose($event)"
   >
 
     <div class="sky-form-group">
@@ -84,7 +84,7 @@
         class="sky-control-label"
         for="demo-input-3"
       >
-        Something
+        Title
       </label>
       <input
         id="demo-input-3"
@@ -97,7 +97,7 @@
         class="sky-control-label"
         for="demo-input-4"
       >
-        Something else
+        Note
       </label>
       <input
         id="demo-input-4"
@@ -113,53 +113,77 @@
     id="inline-form-repeater"
     [expandMode]="none"
   >
-    <sky-repeater-item
+    <sky-repeater-item *ngFor="let item of repeaterData"
       [isExpanded]="false"
+      [@skySlideDissolve]="activeRepeaterItemId === item.id"
     >
-      <sky-repeater-item-title>
-        Repeater item 1
+      <sky-repeater-item-title *ngIf="activeRepeaterItemId !== item.id"
+        class="sky-slide-dissolve-trigger"
+      >
+        <div
+          class="pull-left"
+        >
+          {{ item.title }}
+        </div>
+        <div
+          class="pull-right"
+        >
+          <button
+            class="sky-btn sky-btn-link sky-no-focus sky-btn-no-vertical-padding"
+            (click)="activeRepeaterItemId = item.id"
+          >
+            <sky-icon
+              aria-label="Edit"
+              icon="pencil"
+            >
+            </sky-icon>
+          </button>
+        </div>
       </sky-repeater-item-title>
-    </sky-repeater-item>
-    <sky-repeater-item
-      [isExpanded]="false"
-    >
-      <sky-repeater-item-content>
-          <sky-inline-form>
-            <div class="sky-form-group">
-              <label
-                class="sky-control-label"
-                for="demo-input-3"
-              >
-                Something
-              </label>
-              <input
-                id="demo-input-3"
-                class="sky-form-control"
-                type="text"
-              />
-            </div>
-            <div class="sky-form-group">
-              <label
-                class="sky-control-label"
-                for="demo-input-4"
-              >
-                Something else
-              </label>
-              <input
-                id="demo-input-4"
-                class="sky-form-control"
-                type="text"
-              />
-            </div>
-          </sky-inline-form>
+
+      <sky-repeater-item-content *ngIf="activeRepeaterItemId !== item.id"
+        class="sky-slide-dissolve-trigger"
+      >
+        {{ item.note }}
       </sky-repeater-item-content>
-    </sky-repeater-item>
-    <sky-repeater-item
-      [isExpanded]="false"
-    >
-      <sky-repeater-item-title>
-        Repeater item 2
-      </sky-repeater-item-title>
+
+      <sky-repeater-item-content *ngIf="activeRepeaterItemId === item.id"
+        class="sky-slide-dissolve-content"
+      >
+        <sky-inline-form
+          (close)="onRepeaterInlineFormClose($event)"
+        >
+          <div class="sky-form-group">
+            <label
+              class="sky-control-label"
+              for="demo-input-3"
+            >
+              Title
+            </label>
+            <input
+              id="demo-input-3"
+              class="sky-form-control"
+              type="text"
+              [(ngModel)]="item.title"
+            />
+          </div>
+          <div class="sky-form-group">
+            <label
+              class="sky-control-label"
+              for="demo-input-4"
+            >
+              Note
+            </label>
+            <input
+              id="demo-input-4"
+              class="sky-form-control"
+              type="text"
+              [(ngModel)]="item.note"
+            />
+          </div>
+        </sky-inline-form>
+      </sky-repeater-item-content>
+
     </sky-repeater-item>
   </sky-repeater>
 

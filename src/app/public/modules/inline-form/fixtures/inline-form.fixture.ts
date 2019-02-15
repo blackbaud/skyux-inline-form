@@ -15,7 +15,7 @@ export class SkyInlineFormFixtureComponent {
 
   public config: SkyInlineFormConfig;
 
-  public closed(event: SkyInlineFormCloseArgs) {
+  public onClose(event: SkyInlineFormCloseArgs) {
 
   }
 }

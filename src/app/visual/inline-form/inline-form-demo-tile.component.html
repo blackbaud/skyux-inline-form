@@ -1,49 +1,69 @@
 <sky-tile>
   <sky-tile-title>
-    Tile 1
+    Beatles songs
   </sky-tile-title>
   <sky-tile-summary>
-    $123.4m
+    3
   </sky-tile-summary>
   <sky-tile-content>
-    <sky-tile-content-section>
-      Section 1
-    </sky-tile-content-section>
-    <sky-tile-content-section>
-      <sky-inline-form>
-        <div class="sky-form-group">
-          <label
-            class="sky-control-label"
-            for="demo-input-3"
+    <sky-tile-content-section *ngFor="let item of tileData"
+    [@skySlideDissolve]="activeItemId === item.id"
+    >
+      <div *ngIf="activeItemId !== item.id"
+        class="sky-slide-dissolve-trigger"
+      >
+        <b>
+          {{ item.title }}
+        </b>
+        {{ item.note }}
+        <button
+          class="sky-btn sky-btn-link sky-no-focus sky-btn-no-vertical-padding"
+          (click)="activeItemId = item.id"
+        >
+          <sky-icon
+            aria-label="Edit"
+            icon="pencil"
           >
-            Something
-          </label>
-          <input
-            id="demo-input-3"
-            class="sky-form-control"
-            type="text"
-          />
-        </div>
-        <div class="sky-form-group">
-          <label
-            class="sky-control-label"
-            for="demo-input-4"
-          >
-            Something else
-          </label>
-          <input
-            id="demo-input-4"
-            class="sky-form-control"
-            type="text"
-          />
-        </div>
-      </sky-inline-form>
-    </sky-tile-content-section>
-    <sky-tile-content-section>
-      Section 2
-    </sky-tile-content-section>
-    <sky-tile-content-section>
-      Section 3
+          </sky-icon>
+        </button>
+      </div>
+      <div *ngIf="activeItemId === item.id"
+        class="sky-slide-dissolve-content"
+      >
+        <sky-inline-form
+          (close)="onInlineFormClose($event)"
+        >
+          <div class="sky-form-group">
+            <label
+              class="sky-control-label"
+              for="demo-input-3"
+            >
+              Title
+            </label>
+            <input
+              id="demo-input-3"
+              class="sky-form-control"
+              type="text"
+              [(ngModel)]="item.title"
+            />
+          </div>
+          <div class="sky-form-group">
+            <label
+              class="sky-control-label"
+              for="demo-input-4"
+            >
+              Note
+            </label>
+            <input
+              id="demo-input-4"
+              class="sky-form-control"
+              type="text"
+              [(ngModel)]="item.note"
+            />
+          </div>
+        </sky-inline-form>
+      </div>
+
     </sky-tile-content-section>
   </sky-tile-content>
 </sky-tile>

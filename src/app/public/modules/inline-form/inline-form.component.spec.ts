@@ -19,7 +19,10 @@ import {
 import {
   SkyInlineFormModule
 } from './inline-form.module';
-import { SkyInlineFormType } from './types';
+
+import {
+  SkyInlineFormType
+} from './types';
 
 function getPrimaryButton(fixture: ComponentFixture<any>) {
   return fixture.debugElement.query(
@@ -148,7 +151,7 @@ describe('Inline form component', () => {
 
   it('should emit when done button is clicked', () => {
     fixture.detectChanges();
-    const spy = spyOn(component, 'closed');
+    const spy = spyOn(component, 'onClose');
     const saveButton = getPrimaryButton(fixture);
 
     saveButton.nativeElement.click();
@@ -161,7 +164,7 @@ describe('Inline form component', () => {
 
   it('should emit when cancel button is clicked', () => {
     fixture.detectChanges();
-    const spy = spyOn(component, 'closed');
+    const spy = spyOn(component, 'onClose');
     const cancelButton = getLinkButton(fixture);
 
     cancelButton.nativeElement.click();
@@ -177,7 +180,7 @@ describe('Inline form component', () => {
       type: SkyInlineFormType.SaveDeleteCancel
     };
     fixture.detectChanges();
-    const spy = spyOn(component, 'closed');
+    const spy = spyOn(component, 'onClose');
     const deleteButton = getDefaultButton(fixture);
 
     deleteButton.nativeElement.click();
@@ -193,7 +196,7 @@ describe('Inline form component', () => {
       type: SkyInlineFormType.SaveCancel
     };
     fixture.detectChanges();
-    const spy = spyOn(component, 'closed');
+    const spy = spyOn(component, 'onClose');
     const saveButton = getPrimaryButton(fixture);
 
     saveButton.nativeElement.click();
@@ -214,7 +217,7 @@ describe('Inline form component', () => {
       ]
     };
     fixture.detectChanges();
-    const spy = spyOn(component, 'closed');
+    const spy = spyOn(component, 'onClose');
     const button1 = getPrimaryButton(fixture);
     const button2 = getDefaultButton(fixture);
     const button3 = getLinkButton(fixture);

@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyIconModule
+} from '@blackbaud/skyux/dist/modules/icon';
+
+import {
   SkyRepeaterModule
 } from '@blackbaud/skyux/dist/modules/repeater';
 
@@ -11,6 +15,7 @@ import {
 } from '@blackbaud/skyux/dist/modules/tiles';
 
 import {
+  SkyInlineFormAdapterService,
   SkyInlineFormModule
 } from './public';
 
@@ -20,16 +25,20 @@ import {
 
 @NgModule({
   imports: [
+    SkyIconModule,
     SkyInlineFormModule,
     SkyRepeaterModule,
     SkyTilesModule
   ],
   exports: [
+    SkyIconModule,
     SkyInlineFormModule,
     SkyRepeaterModule,
     SkyTilesModule
   ],
-  providers: [],
+  providers: [
+    SkyInlineFormAdapterService
+  ],
   entryComponents: [
     SkyTileDemoTileComponent
   ]
