@@ -3,6 +3,12 @@ import {
   SkyHostBrowser
 } from '@skyux-sdk/e2e';
 
+import {
+  by,
+  element,
+  browser
+} from 'protractor';
+
 describe('Inline form', () => {
 
   beforeEach(() => {
@@ -42,6 +48,8 @@ describe('Inline form', () => {
 
   it('should match previous screenshot for repeaters', (done) => {
     SkyHostBrowser.scrollTo('#inline-form-repeater');
+    element.all(by.css('#inline-form-repeater .sky-btn')).get(2).click();
+    browser.sleep(500);
     expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
       screenshotName: 'inline-form-repeater'
     });
@@ -50,6 +58,8 @@ describe('Inline form', () => {
   it('should match previous screenshot for repeaters (screen: xs)', (done) => {
     SkyHostBrowser.setWindowBreakpoint('xs');
     SkyHostBrowser.scrollTo('#inline-form-repeater');
+    element.all(by.css('#inline-form-repeater .sky-btn')).get(2).click();
+    browser.sleep(500);
     expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
       screenshotName: 'inline-form-repeater-xs'
     });
@@ -57,6 +67,8 @@ describe('Inline form', () => {
 
   it('should match previous screenshot for tile sections', (done) => {
     SkyHostBrowser.scrollTo('#inline-form-tiles');
+    element.all(by.css('#inline-form-tiles .sky-btn')).get(2).click();
+    browser.sleep(500);
     expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
       screenshotName: 'inline-form-tiles'
     });
@@ -65,6 +77,8 @@ describe('Inline form', () => {
   it('should match previous screenshot for tile sections (screen: xs)', (done) => {
     SkyHostBrowser.setWindowBreakpoint('xs');
     SkyHostBrowser.scrollTo('#inline-form-tiles');
+    element.all(by.css('#inline-form-tiles .sky-btn')).get(2).click();
+    browser.sleep(500);
     expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
       screenshotName: 'inline-form-tiles-xs'
     });

@@ -12,7 +12,7 @@
         class="sky-control-label"
         for="demo-input-1"
       >
-        Something
+        Title
       </label>
       <input
         id="demo-input-1"
@@ -25,7 +25,7 @@
         class="sky-control-label"
         for="demo-input-2"
       >
-        Something else
+        Note
       </label>
       <input
         id="demo-input-2"
@@ -111,7 +111,7 @@
 
   <sky-repeater
     id="inline-form-repeater"
-    [expandMode]="none"
+    [expandMode]="'none'"
   >
     <sky-repeater-item *ngFor="let item of repeaterData"
       [isExpanded]="false"
@@ -120,25 +120,17 @@
       <sky-repeater-item-title *ngIf="activeRepeaterItemId !== item.id"
         class="sky-slide-dissolve-trigger"
       >
-        <div
-          class="pull-left"
+        {{ item.title }}
+        <button
+          class="sky-btn sky-btn-link sky-no-focus"
+          (click)="activeRepeaterItemId = item.id"
         >
-          {{ item.title }}
-        </div>
-        <div
-          class="pull-right"
-        >
-          <button
-            class="sky-btn sky-btn-link sky-no-focus sky-btn-no-vertical-padding"
-            (click)="activeRepeaterItemId = item.id"
+          <sky-icon
+            aria-label="Edit"
+            icon="pencil"
           >
-            <sky-icon
-              aria-label="Edit"
-              icon="pencil"
-            >
-            </sky-icon>
-          </button>
-        </div>
+          </sky-icon>
+        </button>
       </sky-repeater-item-title>
 
       <sky-repeater-item-content *ngIf="activeRepeaterItemId !== item.id"
