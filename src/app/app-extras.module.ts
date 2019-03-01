@@ -4,15 +4,15 @@ import {
 
 import {
   SkyIconModule
-} from '@blackbaud/skyux/dist/modules/icon';
+} from '@skyux/indicators';
 
 import {
   SkyRepeaterModule
-} from '@blackbaud/skyux/dist/modules/repeater';
+} from '@skyux/lists';
 
 import {
   SkyTilesModule
-} from '@blackbaud/skyux/dist/modules/tiles';
+} from '@skyux/tiles';
 
 import {
   SkyInlineFormAdapterService,
@@ -24,12 +24,6 @@ import {
 } from './visual/inline-form/inline-form-demo-tile.component';
 
 @NgModule({
-  imports: [
-    SkyIconModule,
-    SkyInlineFormModule,
-    SkyRepeaterModule,
-    SkyTilesModule
-  ],
   exports: [
     SkyIconModule,
     SkyInlineFormModule,

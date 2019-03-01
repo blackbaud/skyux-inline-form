@@ -48,9 +48,6 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   public close = new EventEmitter<SkyInlineFormCloseArgs>();
 
   @Input()
-  public showDeleteButton = false;
-
-  @Input()
   public config: SkyInlineFormConfig;
 
   public buttons: SkyInlineFormButton[];
@@ -58,7 +55,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   constructor(
     private adapter: SkyInlineFormAdapterService,
     private elementRef: ElementRef,
-    @Optional() private resourcesService: SkyLibResourcesService
+    private resourcesService: SkyLibResourcesService
   ) {}
 
   public ngOnInit(): void {
