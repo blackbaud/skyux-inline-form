@@ -4,10 +4,10 @@ import {
   EventEmitter,
   Input,
   Output,
-  Optional,
   OnInit,
   OnDestroy,
-  ElementRef
+  ElementRef,
+  TemplateRef
 } from '@angular/core';
 
 import {
@@ -36,11 +36,16 @@ import {
   SkyInlineFormAdapterService
 } from './inline-form-adapter.service';
 
+import {
+  skySlideDissolve
+} from './animations';
+
 @Component({
   selector: 'sky-inline-form',
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [ skySlideDissolve ]
 })
 export class SkyInlineFormComponent implements OnInit, OnDestroy {
 
@@ -50,7 +55,25 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   @Input()
   public config: SkyInlineFormConfig;
 
+  @Input()
+  public template: TemplateRef<any>;
+
+  @Input()
+  set showForm(value: boolean) {
+    this._showForm = value;
+
+    if (value) {
+      window.setTimeout(() => this.adapter.applyAutofocus(this.elementRef));
+    }
+  }
+
+  get showForm() {
+    return this._showForm;
+  }
+
   public buttons: SkyInlineFormButton[];
+
+  private _showForm: boolean = false;
 
   constructor(
     private adapter: SkyInlineFormAdapterService,
@@ -66,7 +89,6 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
         this.buttons = buttons;
       });
     }
-    this.adapter.applyAutofocus(this.elementRef);
   }
 
   public ngOnDestroy() {
