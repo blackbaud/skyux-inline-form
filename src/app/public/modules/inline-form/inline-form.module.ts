@@ -7,6 +7,10 @@ import {
 } from '@angular/common';
 
 import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
   SkyInlineFormComponent
 } from './inline-form.component';
 
@@ -19,6 +23,7 @@ import {
     SkyInlineFormComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     SkyInlineFormResourcesModule
   ],

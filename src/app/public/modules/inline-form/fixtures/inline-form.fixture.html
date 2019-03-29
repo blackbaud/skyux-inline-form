@@ -1,7 +1,14 @@
 <sky-inline-form
   [config]="config"
+  [template]="myForm"
+  [showForm]="showForm"
   (close)="onClose($event)"
 >
+  <p>Something</p>
+  <p>Something else</p>
+</sky-inline-form>
+
+<ng-template #myForm>
   <div class="sky-form-group">
     <label
       class="sky-control-label"
@@ -28,13 +35,20 @@
       type="text"
     />
   </div>
-</sky-inline-form>
+</ng-template>
 
 <!-- The following forms are for testing autocomplete behavior on init. -->
 <sky-inline-form *ngIf="showFormWithOutAutocomplete"
   [config]="config"
+  [showForm]="showForm"
+  [template]="formWithOutAutocomplete"
   (close)="onClose($event)"
 >
+  <p>Something</p>
+  <p>Something else</p>
+</sky-inline-form>
+
+<ng-template #formWithOutAutocomplete>
   <div class="sky-form-group">
     <label
       class="sky-control-label"
@@ -61,12 +75,18 @@
       type="text"
     />
   </div>
-</sky-inline-form>
+</ng-template>
 
 <sky-inline-form *ngIf="showFormWithAutocomplete"
   [config]="config"
+  [showForm]="showForm"
+  [template]="formWithAutocomplete"
   (close)="onClose($event)"
 >
+  <p>Something</p>
+  <p>Something else</p>
+</sky-inline-form>
+<ng-template #formWithAutocomplete>
   <div class="sky-form-group">
     <label
       class="sky-control-label"
@@ -94,12 +114,16 @@
       type="text"
     />
   </div>
-</sky-inline-form>
+</ng-template>
 
 <sky-inline-form *ngIf="showFormWithHiddenElements"
   [config]="config"
+  [showForm]="showForm"
+  [template]="formWithHiddenElements"
   (close)="onClose($event)"
 >
+</sky-inline-form>
+<ng-template #formWithHiddenElements>
   <div class="sky-form-group">
     <label
       class="sky-control-label"
@@ -127,11 +151,17 @@
       type="text"
     />
   </div>
-</sky-inline-form>
+</ng-template>
 
 <sky-inline-form *ngIf="showFormWithNoElements"
   [config]="config"
+  [showForm]="showForm"
+  [template]="formWithNoElements"
 >
-  <p>This form is empty!</p>
+  <p>Something</p>
+  <p>Something else</p>
 </sky-inline-form>
+<ng-template #formWithNoElements>
+  <p>This form is empty!</p>
+</ng-template>
 

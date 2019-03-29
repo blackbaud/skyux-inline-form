@@ -94,6 +94,11 @@ describe('Inline form component', () => {
   let component: SkyInlineFormFixtureComponent,
   fixture: ComponentFixture<SkyInlineFormFixtureComponent>;
 
+  function showForm() {
+    component.showForm = true;
+    fixture.detectChanges();
+  }
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -112,7 +117,7 @@ describe('Inline form component', () => {
   });
 
   it('should show Done/Cancel buttons as default if no SkyInlineFormConfig is defined', () => {
-    fixture.detectChanges();
+    showForm();
 
     verifyDoneButtonisDefined(fixture, true);
     verifyCancelButtonIsDefined(fixture, true);
@@ -124,7 +129,7 @@ describe('Inline form component', () => {
     component.config = {
       type: SkyInlineFormType.DoneDeleteCancel
     };
-    fixture.detectChanges();
+    showForm();
 
     verifyDoneButtonisDefined(fixture, true);
     verifyDeleteButtonIsDefined(fixture, true);
@@ -136,7 +141,7 @@ describe('Inline form component', () => {
     component.config = {
       type: SkyInlineFormType.SaveDeleteCancel
     };
-    fixture.detectChanges();
+    showForm();
 
     verifySaveButtonisDefined(fixture, true);
     verifyDeleteButtonIsDefined(fixture, true);
@@ -148,7 +153,7 @@ describe('Inline form component', () => {
     component.config = {
       type: SkyInlineFormType.SaveCancel
     };
-    fixture.detectChanges();
+    showForm();
 
     verifySaveButtonisDefined(fixture, true);
     verifyCancelButtonIsDefined(fixture, true);
@@ -157,7 +162,8 @@ describe('Inline form component', () => {
   });
 
   it('should emit when done button is clicked', () => {
-    fixture.detectChanges();
+    showForm();
+
     const spy = spyOn(component, 'onClose');
     const saveButton = getPrimaryButton(fixture);
 
@@ -170,7 +176,8 @@ describe('Inline form component', () => {
   });
 
   it('should emit when cancel button is clicked', () => {
-    fixture.detectChanges();
+    showForm();
+
     const spy = spyOn(component, 'onClose');
     const cancelButton = getLinkButton(fixture);
 
@@ -186,7 +193,8 @@ describe('Inline form component', () => {
     component.config = {
       type: SkyInlineFormType.SaveDeleteCancel
     };
-    fixture.detectChanges();
+    showForm();
+
     const spy = spyOn(component, 'onClose');
     const deleteButton = getDefaultButton(fixture);
 
@@ -202,7 +210,8 @@ describe('Inline form component', () => {
     component.config = {
       type: SkyInlineFormType.SaveCancel
     };
-    fixture.detectChanges();
+    showForm();
+
     const spy = spyOn(component, 'onClose');
     const saveButton = getPrimaryButton(fixture);
 
@@ -223,7 +232,8 @@ describe('Inline form component', () => {
         { action: 'CUSTOM_ACTION_3', text: 'CUSTOM_TEXT_3', styleType: 'link' }
       ]
     };
-    fixture.detectChanges();
+    showForm();
+
     const spy = spyOn(component, 'onClose');
     const button1 = getPrimaryButton(fixture);
     const button2 = getDefaultButton(fixture);
@@ -243,34 +253,43 @@ describe('Inline form component', () => {
 
   it('should focus the first focusable element when no autofocus is inside of content', () => {
     component.showFormWithOutAutocomplete = true;
-    fixture.detectChanges();
+    showForm();
 
-    expect(document.activeElement).toEqual(document.querySelector('#demo-input-3'));
+    fixture.whenStable().then(() => {
+      expect(document.activeElement).toEqual(document.querySelector('#demo-input-3'));
+    });
   });
 
   it('should focus the autofocus element when there is one present', () => {
     component.showFormWithAutocomplete = true;
-    fixture.detectChanges();
+    showForm();
 
-    expect(document.activeElement).toEqual(document.querySelector('#demo-input-6'));
+    fixture.whenStable().then(() => {
+      expect(document.activeElement).toEqual(document.querySelector('#demo-input-6'));
+    });
   });
 
   it('should focus the first element thats visible', () => {
     component.showFormWithHiddenElements = true;
-    fixture.detectChanges();
+    showForm();
 
-    expect(document.activeElement).toEqual(document.querySelector('#demo-input-8'));
+    fixture.whenStable().then(() => {
+      expect(document.activeElement).toEqual(document.querySelector('#demo-input-8'));
+    });
   });
 
   it('should not move focus if there are no focusable elements in the form', () => {
     component.showFormWithNoElements = true;
-    fixture.detectChanges();
+    showForm();
 
-    expect(document.activeElement).toEqual(document.querySelector('#demo-input-1'));
+    fixture.whenStable().then(() => {
+      expect(document.activeElement).toEqual(document.querySelector('#demo-input-1'));
+    });
   });
 
   it('should pass accessibility', async(() => {
-    fixture.detectChanges();
+    showForm();
+
     fixture.whenStable().then(() => {
       expect(fixture.nativeElement).toBeAccessible();
     });
