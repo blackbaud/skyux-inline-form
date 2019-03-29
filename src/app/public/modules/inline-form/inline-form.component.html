@@ -1,13 +1,13 @@
 <div [@skySlideDissolve]="showForm">
 
   <div *ngIf="!showForm"
-    class="sky-slide-dissolve-trigger"
+    class="sky-slide-dissolve-first"
   >
     <ng-content></ng-content>
   </div>
 
   <div *ngIf="template && showForm"
-    class="sky-slide-dissolve-content"
+    class="sky-slide-dissolve-last"
   >
     <div class="sky-inline-form sky-shadow">
       <div class="sky-inline-form-content">
