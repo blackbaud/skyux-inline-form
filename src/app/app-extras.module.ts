@@ -7,10 +7,6 @@ import {
 } from '@skyux/indicators';
 
 import {
-  SkyRepeaterModule
-} from '@skyux/lists';
-
-import {
   SkyTilesModule
 } from '@skyux/tiles';
 
@@ -27,7 +23,6 @@ import {
   exports: [
     SkyIconModule,
     SkyInlineFormModule,
-    SkyRepeaterModule,
     SkyTilesModule
   ],
   providers: [
