@@ -18,6 +18,10 @@ import {
   SkyInlineFormResourcesModule
 } from '../shared';
 
+import {
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
+
 @NgModule({
   declarations: [
     SkyInlineFormComponent
@@ -29,6 +33,9 @@ import {
   ],
   exports: [
     SkyInlineFormComponent
+  ],
+  providers: [
+    SkyInlineFormAdapterService
   ]
 })
 export class SkyInlineFormModule { }

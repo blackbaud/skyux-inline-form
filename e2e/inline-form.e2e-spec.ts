@@ -46,25 +46,6 @@ describe('Inline form', () => {
     });
   });
 
-  it('should match previous screenshot for repeaters', (done) => {
-    SkyHostBrowser.scrollTo('#inline-form-repeater');
-    element.all(by.css('#inline-form-repeater .sky-btn')).get(2).click();
-    browser.sleep(500);
-    expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
-      screenshotName: 'inline-form-repeater'
-    });
-  });
-
-  it('should match previous screenshot for repeaters (screen: xs)', (done) => {
-    SkyHostBrowser.setWindowBreakpoint('xs');
-    SkyHostBrowser.scrollTo('#inline-form-repeater');
-    element.all(by.css('#inline-form-repeater .sky-btn')).get(2).click();
-    browser.sleep(500);
-    expect('#inline-form-repeater').toMatchBaselineScreenshot(done, {
-      screenshotName: 'inline-form-repeater-xs'
-    });
-  });
-
   it('should match previous screenshot for tile sections', (done) => {
     SkyHostBrowser.scrollTo('#inline-form-tiles');
     element.all(by.css('#inline-form-tiles .sky-btn')).get(2).click();
