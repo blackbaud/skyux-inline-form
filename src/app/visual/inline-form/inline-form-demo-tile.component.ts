@@ -22,5 +22,6 @@ export class SkyTileDemoTileComponent {
 
   public onInlineFormClose(event: any): void {
     this.activeItemId = undefined;
+    console.log(event);
   }
 }

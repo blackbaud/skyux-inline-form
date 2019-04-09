@@ -5,7 +5,9 @@ import {
 import {
   async,
   ComponentFixture,
-  TestBed
+  TestBed,
+  tick,
+  fakeAsync
 } from '@angular/core/testing';
 
 import {
@@ -95,6 +97,8 @@ describe('Inline form component', () => {
   function showForm() {
     component.showForm = true;
     fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
   }
 
   beforeEach(() => {
@@ -108,16 +112,16 @@ describe('Inline form component', () => {
     component = fixture.componentInstance;
   });
 
-  it('should show Done/Cancel buttons as default if no SkyInlineFormConfig is defined', () => {
+  it('should show Done/Cancel buttons as default if no SkyInlineFormConfig is defined', fakeAsync(() => {
     showForm();
 
     verifyDoneButtonisDefined(fixture, true);
     verifyCancelButtonIsDefined(fixture, true);
     verifySaveButtonisDefined(fixture, false);
     verifyDeleteButtonIsDefined(fixture, false);
-  });
+  }));
 
-  it('should show delete Done/Delete/Cancel buttons when SkyInlineFormConfig is defined', () => {
+  it('should show delete Done/Delete/Cancel buttons when SkyInlineFormConfig is defined', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.DoneDeleteCancel
     };
@@ -127,9 +131,9 @@ describe('Inline form component', () => {
     verifyDeleteButtonIsDefined(fixture, true);
     verifyCancelButtonIsDefined(fixture, true);
     verifySaveButtonisDefined(fixture, false);
-  });
+  }));
 
-  it('should show delete Save/Delete/Cancel buttons when SkyInlineFormConfig is defined', () => {
+  it('should show delete Save/Delete/Cancel buttons when SkyInlineFormConfig is defined', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.SaveDeleteCancel
     };
@@ -139,9 +143,9 @@ describe('Inline form component', () => {
     verifyDeleteButtonIsDefined(fixture, true);
     verifyCancelButtonIsDefined(fixture, true);
     verifyDoneButtonisDefined(fixture, false);
-  });
+  }));
 
-  it('should show delete Save/Cancel buttons when SkyInlineFormConfig is defined', () => {
+  it('should show delete Save/Cancel buttons when SkyInlineFormConfig is defined', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.SaveCancel
     };
@@ -151,9 +155,9 @@ describe('Inline form component', () => {
     verifyCancelButtonIsDefined(fixture, true);
     verifyDeleteButtonIsDefined(fixture, false);
     verifyDoneButtonisDefined(fixture, false);
-  });
+  }));
 
-  it('should emit when done button is clicked', () => {
+  it('should emit when done button is clicked', fakeAsync(() => {
     showForm();
 
     const spy = spyOn(component, 'onClose');
@@ -165,9 +169,9 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'done'
     });
-  });
+  }));
 
-  it('should emit when cancel button is clicked', () => {
+  it('should emit when cancel button is clicked', fakeAsync(() => {
     showForm();
 
     const spy = spyOn(component, 'onClose');
@@ -179,9 +183,9 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'cancel'
     });
-  });
+  }));
 
-  it('should emit when delete button is clicked', () => {
+  it('should emit when delete button is clicked', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.SaveDeleteCancel
     };
@@ -196,9 +200,9 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'delete'
     });
-  });
+  }));
 
-  it('should emit when save button is clicked', () => {
+  it('should emit when save button is clicked', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.SaveCancel
     };
@@ -213,9 +217,9 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'save'
     });
-  });
+  }));
 
-  it('should properly set up custom buttons', () => {
+  it('should properly set up custom buttons', fakeAsync(() => {
     component.config = {
       buttonLayout: SkyInlineFormButtonLayout.Custom,
       buttons: [
@@ -241,48 +245,50 @@ describe('Inline form component', () => {
     expect(spy).toHaveBeenCalledWith({
       reason: 'CUSTOM_ACTION_1'
     });
-  });
+  }));
 
-  it('should focus the first focusable element when no autofocus is inside of content', () => {
+  it('should focus the first focusable element when no autofocus is inside of content', fakeAsync(() => {
     component.showFormWithOutAutocomplete = true;
     showForm();
 
     fixture.whenStable().then(() => {
       expect(document.activeElement).toEqual(document.querySelector('#demo-input-3'));
     });
-  });
+  }));
 
-  it('should focus the autofocus element when there is one present', () => {
+  it('should focus the autofocus element when there is one present', fakeAsync(() => {
     component.showFormWithAutocomplete = true;
     showForm();
 
     fixture.whenStable().then(() => {
       expect(document.activeElement).toEqual(document.querySelector('#demo-input-6'));
     });
-  });
+  }));
 
-  it('should focus the first element thats visible', () => {
+  it('should focus the first element thats visible', fakeAsync(() => {
     component.showFormWithHiddenElements = true;
     showForm();
 
     fixture.whenStable().then(() => {
       expect(document.activeElement).toEqual(document.querySelector('#demo-input-8'));
     });
-  });
+  }));
 
-  it('should not move focus if there are no focusable elements in the form', () => {
+  it('should not move focus if there are no focusable elements in the form', fakeAsync(() => {
     component.showFormWithNoElements = true;
     showForm();
 
     fixture.whenStable().then(() => {
       expect(document.activeElement).toEqual(document.querySelector('#demo-input-1'));
     });
-  });
+  }));
 
-  it('should pass accessibility', async(() => {
-    showForm();
+  fit('should pass accessibility', async(() => {
+    component.showForm = true;
+    fixture.detectChanges();
 
     fixture.whenStable().then(() => {
+      fixture.detectChanges();
       expect(fixture.nativeElement).toBeAccessible();
     });
   }));
