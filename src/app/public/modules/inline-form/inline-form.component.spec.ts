@@ -283,7 +283,7 @@ describe('Inline form component', () => {
     });
   }));
 
-  fit('should pass accessibility', async(() => {
+  it('should pass accessibility', async(() => {
     component.showForm = true;
     fixture.detectChanges();
 
