@@ -7,6 +7,10 @@ import {
 } from '@angular/common';
 
 import {
+  SkyAppWindowRef
+} from '@skyux/core';
+
+import {
   SkyInlineFormAdapterService
 } from '../inline-form-adapter.service';
 
@@ -27,7 +31,8 @@ import {
     SkyInlineFormModule
   ],
   providers: [
-    SkyInlineFormAdapterService
+    SkyInlineFormAdapterService,
+    SkyAppWindowRef
   ]
 })
 export class SkyInlineFormFixtureModule { }
