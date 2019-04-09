@@ -12,6 +12,8 @@ import {
 
 import 'rxjs/add/observable/zip';
 
+import 'rxjs/add/operator/take';
+
 import {
   BehaviorSubject
 } from 'rxjs/BehaviorSubject';
