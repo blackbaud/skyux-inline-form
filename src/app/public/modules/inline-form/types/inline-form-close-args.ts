@@ -1,4 +1,3 @@
-export class SkyInlineFormCloseArgs {
-  public reason: string;
-  constructor() {}
+export interface SkyInlineFormCloseArgs {
+  reason: string;
 }

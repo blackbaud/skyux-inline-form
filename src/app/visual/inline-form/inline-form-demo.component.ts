@@ -9,7 +9,7 @@ import {
 
 import {
   SkyInlineFormConfig,
-  SkyInlineFormType
+  SkyInlineFormButtonLayout
 } from '../../public/modules/inline-form/types';
 
 import {
@@ -27,11 +27,13 @@ export class SkyInlineFormDemoComponent {
   public showInlineForm1 = false;
   public showInlineForm2 = false;
   public showInlineForm3 = false;
+
   public editConfig: SkyInlineFormConfig = {
-    type: SkyInlineFormType.SaveDeleteCancel
+    buttonLayout: SkyInlineFormButtonLayout.SaveDeleteCancel
   };
+
   public customConfig: SkyInlineFormConfig = {
-    type: SkyInlineFormType.Custom,
+    buttonLayout: SkyInlineFormButtonLayout.Custom,
     buttons: [
       { action: 'save', text: 'Do it!', styleType: 'primary' },
       { action: 'done', text: 'Don\'t let your dreams be dreams.', styleType: 'default' },
@@ -69,7 +71,7 @@ export class SkyInlineFormDemoComponent {
     }
   };
 
-  public onClose(event: any) {
+  public onClose(event: any): void {
     console.log(event);
   }
 

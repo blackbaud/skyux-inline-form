@@ -1,12 +1,12 @@
 import {
-  SkyInlineFormType
-} from './inline-form-type';
+  SkyInlineFormButtonLayout
+} from './inline-form-button-layout';
 
 import {
   SkyInlineFormButtonConfig
 } from './inline-form-button-config';
 
 export interface SkyInlineFormConfig {
-  type: SkyInlineFormType;
+  buttonLayout: SkyInlineFormButtonLayout;
   buttons?: SkyInlineFormButtonConfig[];
 }

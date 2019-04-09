@@ -25,7 +25,5 @@ export class SkyInlineFormFixtureComponent {
 
   public showFormWithNoElements = false;
 
-  public onClose(event: SkyInlineFormCloseArgs) {
-
-  }
+  public onClose(event: SkyInlineFormCloseArgs): void {}
 }

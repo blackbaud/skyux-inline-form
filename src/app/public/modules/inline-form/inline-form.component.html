@@ -1,4 +1,6 @@
-<div [@skySlideDissolve]="showForm">
+<div
+  [@skySlideDissolve]="showForm"
+>
 
   <div *ngIf="!showForm"
     class="sky-slide-dissolve-first"
@@ -9,13 +11,21 @@
   <div *ngIf="template && showForm"
     class="sky-slide-dissolve-last"
   >
-    <div class="sky-inline-form sky-shadow">
-      <div class="sky-inline-form-content">
-        <ng-container [ngTemplateOutlet]="template"></ng-container>
+    <div
+      class="sky-inline-form sky-shadow"
+    >
+      <div
+        class="sky-inline-form-content"
+      >
+        <ng-container
+          [ngTemplateOutlet]="template"
+        >
+        </ng-container>
       </div>
-      <div class="sky-inline-form-footer">
-        <button
-          *ngFor="let button of buttons"
+      <div
+        class="sky-inline-form-footer"
+      >
+        <button *ngFor="let button of buttons"
           type="button"
           class="sky-btn"
           ngClass="sky-btn-{{ button.styleType }}"

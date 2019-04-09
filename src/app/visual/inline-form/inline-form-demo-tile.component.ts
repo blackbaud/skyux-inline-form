@@ -20,7 +20,7 @@ export class SkyTileDemoTileComponent {
     { id: '3', title: 'While my Guitar Gently Weeps', note: 'Written by George Harrison' }
   ];
 
-  public onInlineFormClose(event: any) {
+  public onInlineFormClose(event: any): void {
     this.activeItemId = undefined;
   }
 }
