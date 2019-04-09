@@ -11,9 +11,8 @@ import {
 } from '@skyux/tiles';
 
 import {
-  SkyInlineFormAdapterService,
   SkyInlineFormModule
-} from './public';
+} from './public/modules/inline-form/inline-form.module';
 
 import {
   SkyTileDemoTileComponent
@@ -24,9 +23,6 @@ import {
     SkyIconModule,
     SkyInlineFormModule,
     SkyTilesModule
-  ],
-  providers: [
-    SkyInlineFormAdapterService
   ],
   entryComponents: [
     SkyTileDemoTileComponent

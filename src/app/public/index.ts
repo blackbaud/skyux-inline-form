@@ -1,5 +1,3 @@
-export * from './modules/inline-form/inline-form-adapter.service';
-export * from './modules/inline-form/inline-form.component';
 export * from './modules/inline-form/inline-form.module';
 export * from './modules/inline-form/types/inline-form-button-action';
 export * from './modules/inline-form/types/inline-form-button-config';

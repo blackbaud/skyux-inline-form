@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyAppWindowRef
+} from '@skyux/core';
+
+import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
 
@@ -35,6 +39,7 @@ import {
     SkyInlineFormComponent
   ],
   providers: [
+    SkyAppWindowRef,
     SkyInlineFormAdapterService
   ]
 })
