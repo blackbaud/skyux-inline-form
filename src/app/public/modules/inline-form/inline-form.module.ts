@@ -20,7 +20,7 @@ import {
 
 import {
   SkyInlineFormResourcesModule
-} from '../shared';
+} from '../shared/inline-form-resources.module';
 
 @NgModule({
   declarations: [

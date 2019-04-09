@@ -8,20 +8,18 @@ import {
 } from './inline-form-demo-tile.component';
 
 import {
-  skySlideDissolve
-} from '../../public/modules/inline-form/animations';
+  SkyInlineFormConfig
+} from '../../public/modules/inline-form/types/inline-form-config';
 
 import {
-  SkyInlineFormConfig,
   SkyInlineFormButtonLayout
-} from '../../public/modules/inline-form/types';
+} from '../../public/modules/inline-form/types/inline-form-button-layout';
 
 @Component({
   selector: 'sky-inline-form-demo',
   templateUrl: './inline-form-demo.component.html',
   styleUrls: ['./inline-form-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [ skySlideDissolve ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkyInlineFormDemoComponent {
   public showInlineForm1 = false;

@@ -28,7 +28,7 @@ import {
 
 import {
   SkyInlineFormButtonLayout
-} from './types';
+} from './types/inline-form-button-layout';
 
 function getPrimaryButton(fixture: ComponentFixture<any>): DebugElement {
   return fixture.debugElement.query(

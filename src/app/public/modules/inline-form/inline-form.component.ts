@@ -2,12 +2,12 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
-  Output,
   OnInit,
   OnDestroy,
-  ElementRef,
+  Output,
   TemplateRef
 } from '@angular/core';
 
@@ -29,18 +29,27 @@ import {
 
 import {
   skySlideDissolve
-} from './animations';
+} from './animations/slide-dissolve';
 
 import {
   SkyInlineFormAdapterService
 } from './inline-form-adapter.service';
 
 import {
-  SkyInlineFormCloseArgs,
-  SkyInlineFormButtonLayout,
-  SkyInlineFormConfig,
+  SkyInlineFormCloseArgs
+} from './types/inline-form-close-args';
+
+import {
+  SkyInlineFormConfig
+} from './types/inline-form-config';
+
+import {
   SkyInlineFormButtonConfig
-} from './types';
+} from './types/inline-form-button-config';
+
+import {
+  SkyInlineFormButtonLayout
+} from './types/inline-form-button-layout';
 
 @Component({
   selector: 'sky-inline-form',

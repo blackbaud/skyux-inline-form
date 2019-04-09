@@ -3,9 +3,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyInlineFormCloseArgs,
+  SkyInlineFormCloseArgs
+} from '../types/inline-form-close-args';
+
+import {
   SkyInlineFormConfig
-} from '../types';
+} from '../types/inline-form-config';
 
 @Component({
   selector: 'sky-inline-form-fixture',
