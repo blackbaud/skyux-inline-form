@@ -91,7 +91,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
     if (this.isValidCustomConfig(this.config)) {
       this.buttons = this.getCustomButtons(this.config.buttons);
     } else {
-      this.getPresetButtons().then((buttons: any) => {
+      this.getPresetButtons().then((buttons: SkyInlineFormButtonConfig[]) => {
         this.buttons = buttons;
         this.changeDetectorRef.markForCheck();
       });
@@ -116,6 +116,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
     let promise: Promise<SkyInlineFormButtonConfig[]>;
 
     switch (buttonType) {
+      /* istanbul ignore next */
       default:
       case SkyInlineFormButtonLayout.DoneCancel:
         Observable
