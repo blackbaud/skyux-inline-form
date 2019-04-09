@@ -4,6 +4,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyTileDemoTileComponent
+} from './inline-form-demo-tile.component';
+
+import {
   skySlideDissolve
 } from '../../public/modules/inline-form/animations';
 
@@ -11,10 +15,6 @@ import {
   SkyInlineFormConfig,
   SkyInlineFormButtonLayout
 } from '../../public/modules/inline-form/types';
-
-import {
-  SkyTileDemoTileComponent
-} from './inline-form-demo-tile.component';
 
 @Component({
   selector: 'sky-inline-form-demo',

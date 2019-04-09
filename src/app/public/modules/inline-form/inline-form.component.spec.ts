@@ -21,12 +21,12 @@ import {
 } from './fixtures/inline-form.fixture';
 
 import {
-  SkyInlineFormButtonLayout
-} from './types';
-
-import {
   SkyInlineFormFixtureModule
 } from './fixtures/inline-form.fixture.module';
+
+import {
+  SkyInlineFormButtonLayout
+} from './types';
 
 function getPrimaryButton(fixture: ComponentFixture<any>): DebugElement {
   return fixture.debugElement.query(

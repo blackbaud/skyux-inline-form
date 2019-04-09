@@ -10,23 +10,31 @@ import {
   TemplateRef
 } from '@angular/core';
 
-import {
-  Observable
-} from 'rxjs/Observable';
+import 'rxjs/add/observable/zip';
 
 import {
   BehaviorSubject
 } from 'rxjs/BehaviorSubject';
 
-import 'rxjs/add/observable/zip';
+import {
+  Observable
+} from 'rxjs/Observable';
+
+import {
+  SkyAppWindowRef
+} from '@skyux/core';
 
 import {
   SkyLibResourcesService
 } from '@skyux/i18n';
 
 import {
-  SkyAppWindowRef
-} from '@skyux/core';
+  skySlideDissolve
+} from './animations';
+
+import {
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
 
 import {
   SkyInlineFormCloseArgs,
@@ -34,14 +42,6 @@ import {
   SkyInlineFormConfig,
   SkyInlineFormButtonConfig
 } from './types';
-
-import {
-  SkyInlineFormAdapterService
-} from './inline-form-adapter.service';
-
-import {
-  skySlideDissolve
-} from './animations';
 
 @Component({
   selector: 'sky-inline-form',

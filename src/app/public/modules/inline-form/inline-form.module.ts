@@ -1,14 +1,18 @@
 import {
-  NgModule
-} from '@angular/core';
-
-import {
   CommonModule
 } from '@angular/common';
 
 import {
+  NgModule
+} from '@angular/core';
+
+import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
+
+import {
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
 
 import {
   SkyInlineFormComponent
@@ -17,10 +21,6 @@ import {
 import {
   SkyInlineFormResourcesModule
 } from '../shared';
-
-import {
-  SkyInlineFormAdapterService
-} from './inline-form-adapter.service';
 
 @NgModule({
   declarations: [
