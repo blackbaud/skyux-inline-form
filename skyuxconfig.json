@@ -1,5 +1,6 @@
 {
-  "name": "skyux-sample",
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
+  "name": "skyux-inline-form",
   "mode": "easy",
   "compileMode": "aot",
   "skyuxModules": [
