@@ -8,7 +8,9 @@ import {
   OnInit,
   OnDestroy,
   Output,
-  TemplateRef
+  TemplateRef,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 
 import 'rxjs/add/observable/zip';
@@ -58,7 +60,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [ skySlideDissolve ]
 })
-export class SkyInlineFormComponent implements OnInit, OnDestroy {
+export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   public config: SkyInlineFormConfig;
@@ -99,11 +101,15 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    if (this.isValidCustomConfig(this.config)) {
-      this.buttons = this.getCustomButtons(this.config.buttons);
-    } else {
-      this.getPresetButtons().then((buttons: SkyInlineFormButtonConfig[]) => {
-        this.buttons = buttons;
+    this.setupButtons(this.config).then(_ => {
+      this.changeDetectorRef.markForCheck();
+    });
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.config) {
+      this.config = changes.config.currentValue;
+      this.setupButtons(this.config).then(_ => {
         this.changeDetectorRef.markForCheck();
       });
     }
@@ -118,6 +124,18 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
       reason: event.action
     };
     this.close.emit(args);
+  }
+
+  private setupButtons(config: SkyInlineFormConfig): Promise<SkyInlineFormButtonConfig[]> {
+    if (this.isValidCustomConfig(config)) {
+      this.buttons = this.getCustomButtons(config.buttons);
+      return Promise.resolve(this.buttons);
+    } else {
+      return this.getPresetButtons().then((buttons: SkyInlineFormButtonConfig[]) => {
+        this.buttons = buttons;
+        return buttons;
+      });
+    }
   }
 
   private getPresetButtons(): Promise<SkyInlineFormButtonConfig[]> {
