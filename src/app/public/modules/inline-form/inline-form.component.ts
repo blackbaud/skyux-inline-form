@@ -5,12 +5,12 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
-  OnDestroy,
-  Output,
-  TemplateRef,
   OnChanges,
-  SimpleChanges
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  TemplateRef
 } from '@angular/core';
 
 import 'rxjs/add/observable/zip';
@@ -101,7 +101,7 @@ export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.setupButtons(this.config).then(_ => {
+    this.setupButtons(this.config).then(() => {
       this.changeDetectorRef.markForCheck();
     });
   }
@@ -109,7 +109,7 @@ export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.config) {
       this.config = changes.config.currentValue;
-      this.setupButtons(this.config).then(_ => {
+      this.setupButtons(this.config).then(() => {
         this.changeDetectorRef.markForCheck();
       });
     }
