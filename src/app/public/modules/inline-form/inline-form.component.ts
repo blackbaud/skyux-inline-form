@@ -5,11 +5,9 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
   TemplateRef
 } from '@angular/core';
 
@@ -60,10 +58,21 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [ skySlideDissolve ]
 })
-export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
+export class SkyInlineFormComponent implements OnInit, OnDestroy {
 
   @Input()
-  public config: SkyInlineFormConfig;
+  public set config(value: SkyInlineFormConfig) {
+    if (value !== this._config) {
+      this._config = value;
+      this.setupButtons(this._config).then(() => {
+        this.changeDetectorRef.markForCheck();
+      });
+    }
+  }
+
+  public get config(): SkyInlineFormConfig {
+    return this._config;
+  }
 
   @Input()
   public template: TemplateRef<any>;
@@ -90,6 +99,8 @@ export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public buttons: SkyInlineFormButtonConfig[];
 
+  private _config: SkyInlineFormConfig;
+
   private _showForm: boolean = false;
 
   constructor(
@@ -104,14 +115,6 @@ export class SkyInlineFormComponent implements OnInit, OnChanges, OnDestroy {
     this.setupButtons(this.config).then(() => {
       this.changeDetectorRef.markForCheck();
     });
-  }
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.config) {
-      this.setupButtons(this.config).then(() => {
-        this.changeDetectorRef.markForCheck();
-      });
-    }
   }
 
   public ngOnDestroy(): void {

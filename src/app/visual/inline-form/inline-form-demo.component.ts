@@ -73,4 +73,13 @@ export class SkyInlineFormDemoComponent {
     console.log(event);
   }
 
+  public onChangeButtonConfigClick(): void {
+    this.customConfig = {
+      buttonLayout: SkyInlineFormButtonLayout.Custom,
+      buttons: [
+        { action: 'cancel', text: 'Yesterday, you said tomorrow.', styleType: 'link' }
+      ]
+    };
+  }
+
 }
