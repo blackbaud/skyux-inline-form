@@ -64,9 +64,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   public set config(value: SkyInlineFormConfig) {
     if (value !== this._config) {
       this._config = value;
-      this.setupButtons(this._config).then(() => {
-        this.changeDetectorRef.markForCheck();
-      });
+      this.setupButtons();
     }
   }
 
@@ -112,9 +110,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.setupButtons(this.config).then(() => {
-      this.changeDetectorRef.markForCheck();
-    });
+    this.setupButtons();
   }
 
   public ngOnDestroy(): void {
@@ -128,16 +124,17 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
     this.close.emit(args);
   }
 
-  private setupButtons(config: SkyInlineFormConfig): Promise<SkyInlineFormButtonConfig[]> {
-    if (this.isValidCustomConfig(config)) {
-      this.buttons = this.getCustomButtons(config.buttons);
-      return Promise.resolve(this.buttons);
-    } else {
-      return this.getPresetButtons().then((buttons: SkyInlineFormButtonConfig[]) => {
-        this.buttons = buttons;
-        return buttons;
-      });
+  private setupButtons(): void {
+    if (this.isValidCustomConfig(this.config)) {
+      this.buttons = this.getCustomButtons(this.config.buttons);
+      this.changeDetectorRef.markForCheck();
+      return;
     }
+
+    this.getPresetButtons().then((buttons) => {
+      this.buttons = buttons;
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
   private getPresetButtons(): Promise<SkyInlineFormButtonConfig[]> {

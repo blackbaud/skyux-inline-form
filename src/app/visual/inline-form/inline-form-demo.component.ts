@@ -8,12 +8,9 @@ import {
 } from './inline-form-demo-tile.component';
 
 import {
+  SkyInlineFormButtonLayout,
   SkyInlineFormConfig
-} from '../../public/modules/inline-form/types/inline-form-config';
-
-import {
-  SkyInlineFormButtonLayout
-} from '../../public/modules/inline-form/types/inline-form-button-layout';
+} from '../../public';
 
 @Component({
   selector: 'sky-inline-form-demo',
@@ -77,7 +74,11 @@ export class SkyInlineFormDemoComponent {
     this.customConfig = {
       buttonLayout: SkyInlineFormButtonLayout.Custom,
       buttons: [
-        { action: 'cancel', text: 'Yesterday, you said tomorrow.', styleType: 'link' }
+        {
+          action: 'cancel',
+          styleType: 'link',
+          text: 'Yesterday, you said tomorrow.'
+        }
       ]
     };
   }
