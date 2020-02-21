@@ -11,14 +11,6 @@ import {
   TemplateRef
 } from '@angular/core';
 
-import 'rxjs/add/observable/zip';
-
-import 'rxjs/add/operator/take';
-
-import {
-  Observable
-} from 'rxjs/Observable';
-
 import {
   SkyAppWindowRef
 } from '@skyux/core';
@@ -26,6 +18,14 @@ import {
 import {
   SkyLibResourcesService
 } from '@skyux/i18n';
+
+import {
+  zip as observableZip
+} from 'rxjs';
+
+import {
+  take
+} from 'rxjs/operators';
 
 import {
   skySlideDissolve
@@ -147,12 +147,11 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
       /* istanbul ignore next */
       default:
       case SkyInlineFormButtonLayout.DoneCancel:
-        Observable
-          .zip(
-            this.resourcesService.getString('skyux_inline_form_button_done'),
-            this.resourcesService.getString('skyux_inline_form_button_cancel')
-          )
-          .take(1)
+        observableZip(
+          this.resourcesService.getString('skyux_inline_form_button_done'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
+        )
+          .pipe(take(1))
           .subscribe((values: any) => {
             promise = new Promise<SkyInlineFormButtonConfig[]>((resolve: any) => {
               resolve([
@@ -172,12 +171,11 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
         break;
 
       case SkyInlineFormButtonLayout.SaveCancel:
-        Observable
-          .zip(
-            this.resourcesService.getString('skyux_inline_form_button_save'),
-            this.resourcesService.getString('skyux_inline_form_button_cancel')
-          )
-          .take(1)
+        observableZip(
+          this.resourcesService.getString('skyux_inline_form_button_save'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
+        )
+          .pipe(take(1))
           .subscribe((values: any) => {
             promise = new Promise<SkyInlineFormButtonConfig[]>((resolve: any) => {
               resolve([
@@ -197,13 +195,12 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
         break;
 
       case SkyInlineFormButtonLayout.DoneDeleteCancel:
-        Observable
-          .zip(
-            this.resourcesService.getString('skyux_inline_form_button_done'),
-            this.resourcesService.getString('skyux_inline_form_button_delete'),
-            this.resourcesService.getString('skyux_inline_form_button_cancel')
-          )
-          .take(1)
+        observableZip(
+          this.resourcesService.getString('skyux_inline_form_button_done'),
+          this.resourcesService.getString('skyux_inline_form_button_delete'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
+        )
+          .pipe(take(1))
           .subscribe((values: any) => {
             promise = new Promise<SkyInlineFormButtonConfig[]>((resolve: any) => {
               resolve([
@@ -228,13 +225,12 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
         break;
 
       case SkyInlineFormButtonLayout.SaveDeleteCancel:
-        Observable
-          .zip(
-            this.resourcesService.getString('skyux_inline_form_button_save'),
-            this.resourcesService.getString('skyux_inline_form_button_delete'),
-            this.resourcesService.getString('skyux_inline_form_button_cancel')
-          )
-          .take(1)
+        observableZip(
+          this.resourcesService.getString('skyux_inline_form_button_save'),
+          this.resourcesService.getString('skyux_inline_form_button_delete'),
+          this.resourcesService.getString('skyux_inline_form_button_cancel')
+        )
+          .pipe(take(1))
           .subscribe((values: any) => {
             promise = new Promise<SkyInlineFormButtonConfig[]>((resolve: any) => {
               resolve([
