@@ -32,8 +32,12 @@ import {
 } from './animations/slide-dissolve';
 
 import {
-  SkyInlineFormAdapterService
-} from './inline-form-adapter.service';
+  SkyInlineFormButtonConfig
+} from './types/inline-form-button-config';
+
+import {
+  SkyInlineFormButtonLayout
+} from './types/inline-form-button-layout';
 
 import {
   SkyInlineFormCloseArgs
@@ -44,12 +48,8 @@ import {
 } from './types/inline-form-config';
 
 import {
-  SkyInlineFormButtonConfig
-} from './types/inline-form-button-config';
-
-import {
-  SkyInlineFormButtonLayout
-} from './types/inline-form-button-layout';
+  SkyInlineFormAdapterService
+} from './inline-form-adapter.service';
 
 @Component({
   selector: 'sky-inline-form',
