@@ -79,6 +79,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
   public set showForm(value: boolean) {
     this._showForm = value;
 
+    /* istanbul ignore else */
     if (value) {
       // setTimeout() prevents applyAutofocus() from firing
       // until after *ngIf has added the form element to the DOM.
@@ -139,7 +140,7 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
 
   private getPresetButtons(): Promise<SkyInlineFormButtonConfig[]> {
     let buttonType =
-      this.config ? this.config.buttonLayout || SkyInlineFormButtonLayout.DoneCancel : SkyInlineFormButtonLayout.DoneCancel;
+      this.config ? this.config.buttonLayout : SkyInlineFormButtonLayout.DoneCancel;
 
     let promise: Promise<SkyInlineFormButtonConfig[]>;
 
