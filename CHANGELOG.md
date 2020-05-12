@@ -7,7 +7,7 @@
 
 ### Breaking changes
 
-- Dropped support for `rxjs@5`. Consumers may install `rxjs-compat@^6` to support older versions of `rxjs`. [#18](https://github.com/blackbaud/skyux-inline-form/pull/18)
+- Dropped support for `rxjs@5`. Consumers can install `rxjs-compat@^6` to support older versions of `rxjs`. [#18](https://github.com/blackbaud/skyux-inline-form/pull/18)
 
 # 3.1.0 (2019-12-20)
 
