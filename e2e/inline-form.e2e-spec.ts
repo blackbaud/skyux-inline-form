@@ -96,6 +96,9 @@ describe('Inline form', () => {
   }
 
   beforeEach(async () => {
+    currentTheme = undefined;
+    currentThemeMode = undefined;
+
     await SkyHostBrowser.get('visual/inline-form');
     await SkyHostBrowser.setWindowBreakpoint('lg');
   });
