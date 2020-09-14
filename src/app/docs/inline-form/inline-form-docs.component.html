@@ -1,0 +1,76 @@
+<sky-docs-demo-page
+  moduleName="SkyInlineFormModule"
+  moduleSourceCodePath="src/app/public/modules/inline-form/"
+  pageTitle="Inline form"
+>
+
+  <sky-docs-demo>
+    <sky-docs-demo-control-panel
+      (selectionChange)="onDemoSelectionChange($event)"
+    >
+      <sky-docs-demo-control-panel-section>
+        <sky-docs-demo-control-panel-radio-group
+          heading="Default button configurations"
+          propertyName="buttonLayout"
+          [choices]="inlineFormButtonLayoutChoices"
+          [initialValue]="1"
+        >
+        </sky-docs-demo-control-panel-radio-group>
+      </sky-docs-demo-control-panel-section>
+    </sky-docs-demo-control-panel>
+
+    <sky-inline-form
+      id="my-inline-form"
+      [config]="demoSettings.inlineFormConfig"
+      [showForm]="demoSettings.showForm"
+      [template]="inlineFormTemplate"
+      (close)="onInlineFormClose($event)"
+    >
+      <h4>
+        {{ demoSettings.title }}
+        <button
+          aria-label="Edit"
+          class="sky-btn sky-btn-link sky-demo-btn-edit"
+          (click)="demoSettings.showForm = true"
+        >
+          <sky-icon
+            icon="pencil"
+          ></sky-icon>
+        </button>
+      </h4>
+    </sky-inline-form>
+  </sky-docs-demo>
+
+  <sky-docs-code-examples
+    [packageDependencies]="{
+      '@skyux/inline-form': '*'
+    }"
+  >
+    <sky-docs-code-example
+      heading="Basic setup"
+      sourceCodePath="src/app/public/plugin-resources/code-examples/inline-form/basic"
+    ></sky-docs-code-example>
+  </sky-docs-code-examples>
+
+</sky-docs-demo-page>
+
+<ng-template
+  #inlineFormTemplate
+>
+  <div
+    class="sky-form-group"
+  >
+    <label
+      class="sky-control-label"
+      for="my-inline-form"
+    >
+      Page title
+    </label>
+    <input
+      id="input-page-title"
+      class="sky-form-control"
+      type="text"
+      [(ngModel)]="demoModel.title"
+    />
+  </div>
+</ng-template>
