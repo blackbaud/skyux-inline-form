@@ -15,7 +15,7 @@ import {
 export class InlineFormDemoComponent {
 
   public demoModel: {
-    title?: string;
+    firstName?: string;
   } = { };
 
   public inlineFormConfig: SkyInlineFormConfig = {
@@ -24,15 +24,15 @@ export class InlineFormDemoComponent {
 
   public showForm: boolean = false;
 
-  public title: string = 'My inline form title';
+  public firstName: string = 'Jane';
 
   constructor() {
-    this.demoModel.title = this.title;
+    this.demoModel.firstName = this.firstName;
   }
 
   public onInlineFormClose(args: SkyInlineFormCloseArgs): void {
     if (args.reason === 'save') {
-      this.title = this.demoModel.title;
+      this.firstName = this.demoModel.firstName;
     }
 
     this.showForm = false;

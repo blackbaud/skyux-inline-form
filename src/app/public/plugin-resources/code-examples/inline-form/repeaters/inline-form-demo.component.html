@@ -44,13 +44,16 @@
   >
     <label
       class="sky-control-label"
+      [for]="myTitle.id"
     >
       Title
     </label>
     <input
       class="sky-form-control"
+      skyId
       type="text"
       [(ngModel)]="demoModel.title"
+      #myTitle="skyId"
     />
   </div>
   <div
@@ -58,13 +61,16 @@
   >
     <label
       class="sky-control-label"
+      [for]="myNote.id"
     >
       Note
     </label>
     <input
       class="sky-form-control"
+      skyId
       type="text"
       [(ngModel)]="demoModel.note"
+      #myNote="skyId"
     />
   </div>
 </ng-template>

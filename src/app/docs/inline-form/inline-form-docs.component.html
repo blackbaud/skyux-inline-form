@@ -23,7 +23,6 @@
     </sky-docs-demo-control-panel>
 
     <sky-inline-form
-      id="my-inline-form"
       [config]="demoSettings.inlineFormConfig"
       [showForm]="demoSettings.showForm"
       [template]="inlineFormTemplate"
@@ -31,8 +30,12 @@
     >
       <table>
         <tr>
-          <th>First name:</th>
-          <td>{{ demoSettings.firstName }}</td>
+          <th>
+            First name:
+          </th>
+          <td>
+            {{ demoSettings.firstName }}
+          </td>
           <td>
             <button
               aria-label="Edit"
@@ -221,15 +224,17 @@
   >
     <label
       class="sky-control-label"
-      for="demo-field-first-name"
+      [for]="firstName.id"
     >
       First name
     </label>
     <input
       id="demo-field-first-name"
       class="sky-form-control"
+      skyId
       type="text"
       [(ngModel)]="demoModel.firstName"
+      #firstName="skyId"
     />
   </div>
 </ng-template>

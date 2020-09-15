@@ -11,6 +11,10 @@ import {
 } from '@angular/forms';
 
 import {
+  SkyIdModule
+} from '@skyux/core';
+
+import {
   SkyIconModule
 } from '@skyux/indicators';
 
@@ -27,6 +31,7 @@ import {
     CommonModule,
     FormsModule,
     SkyIconModule,
+    SkyIdModule,
     SkyInlineFormModule
   ],
   exports: [
