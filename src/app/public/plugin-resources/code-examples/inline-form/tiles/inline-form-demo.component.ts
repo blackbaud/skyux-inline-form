@@ -3,10 +3,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyInlineFormButtonLayout,
-  SkyInlineFormCloseArgs,
-  SkyInlineFormConfig
-} from '@skyux/inline-form';
+  SkyTileDashboardConfig
+} from '@skyux/tiles';
+
+import {
+  InlineFormTileDemoComponent
+} from './inline-form-tile-demo.component';
 
 @Component({
   selector: 'app-inline-form-demo',
@@ -14,28 +16,33 @@ import {
 })
 export class InlineFormDemoComponent {
 
-  public demoModel: {
-    title?: string;
-  } = { };
-
-  public inlineFormConfig: SkyInlineFormConfig = {
-    buttonLayout: SkyInlineFormButtonLayout.SaveCancel
-  };
-
-  public showForm: boolean = false;
-
-  public title: string = 'My inline form title';
-
-  constructor() {
-    this.demoModel.title = this.title;
-  }
-
-  public onInlineFormClose(args: SkyInlineFormCloseArgs): void {
-    if (args.reason === 'save') {
-      this.title = this.demoModel.title;
+  public dashboardConfig: SkyTileDashboardConfig = {
+    tiles: [
+      {
+        id: 'tile1',
+        componentType: InlineFormTileDemoComponent
+      }
+    ],
+    layout: {
+      singleColumn: {
+        tiles: [
+          {
+            id: 'tile1',
+            isCollapsed: false
+          }
+        ]
+      },
+      multiColumn: [
+        {
+          tiles: [
+            {
+              id: 'tile1',
+              isCollapsed: false
+            }
+          ]
+        }
+      ]
     }
-
-    this.showForm = false;
-  }
+  };
 
 }

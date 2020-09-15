@@ -1,0 +1,59 @@
+<sky-tile>
+  <sky-tile-title>
+    Event description
+  </sky-tile-title>
+  <sky-tile-content>
+    <sky-tile-content-section>
+
+      <sky-inline-form
+        [showForm]="showForm"
+        [template]="inlineFormTemplate"
+        (close)="onInlineFormClose($event)"
+      >
+        <sky-fluid-grid>
+          <sky-row>
+            <sky-column
+              screenXSmall="11"
+            >
+              {{ description }}
+            </sky-column>
+            <sky-column
+              screenXSmall="1"
+            >
+              <button
+                class="sky-btn sky-btn-link sky-no-focus sky-demo-btn-edit"
+                (click)="showForm = true"
+              >
+                <sky-icon
+                  aria-label="Edit"
+                  icon="pencil"
+                ></sky-icon>
+              </button>
+            </sky-column>
+          </sky-row>
+        </sky-fluid-grid>
+      </sky-inline-form>
+    </sky-tile-content-section>
+  </sky-tile-content>
+</sky-tile>
+
+<ng-template
+  #inlineFormTemplate
+>
+  <div
+    class="sky-form-group"
+  >
+    <label
+      class="sky-control-label"
+      for="demo-input-tile-description"
+    >
+      Event description
+    </label>
+    <textarea
+      id="demo-input-tile-description"
+      class="sky-form-control"
+      [(ngModel)]="demoModel.description"
+    >
+    </textarea>
+  </div>
+</ng-template>
