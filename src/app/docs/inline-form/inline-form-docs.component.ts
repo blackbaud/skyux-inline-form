@@ -28,23 +28,23 @@ export class InlineFormDocsComponent {
   ];
 
   public demoSettings: {
+    firstName: string;
     inlineFormConfig: SkyInlineFormConfig;
     showForm: boolean;
-    title: string;
   } = {
+    firstName: 'Jane',
     inlineFormConfig: {
       buttonLayout: SkyInlineFormButtonLayout.SaveCancel
     },
-    showForm: false,
-    title: 'My inline form title'
+    showForm: false
   };
 
   public demoModel: {
-    title?: string;
+    firstName?: string;
   } = { };
 
   constructor(private changeDetector: ChangeDetectorRef) {
-    this.demoModel.title = this.demoSettings.title;
+    this.demoModel.firstName = this.demoSettings.firstName;
   }
 
   public onDemoSelectionChange(change: SkyDocsDemoControlPanelChange): void {
@@ -54,8 +54,8 @@ export class InlineFormDocsComponent {
   }
 
   public onInlineFormClose(args: SkyInlineFormCloseArgs): void {
-    if (args.reason === 'save') {
-      this.demoSettings.title = this.demoModel.title;
+    if (args.reason === 'save' || args.reason === 'done') {
+      this.demoSettings.firstName = this.demoModel.firstName;
     }
 
     this.demoSettings.showForm = false;

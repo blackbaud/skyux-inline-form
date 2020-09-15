@@ -16,7 +16,7 @@
           heading="Default button configurations"
           propertyName="buttonLayout"
           [choices]="inlineFormButtonLayoutChoices"
-          [initialValue]="1"
+          [initialValue]="3"
         >
         </sky-docs-demo-control-panel-radio-group>
       </sky-docs-demo-control-panel-section>
@@ -29,18 +29,23 @@
       [template]="inlineFormTemplate"
       (close)="onInlineFormClose($event)"
     >
-      <h4>
-        {{ demoSettings.title }}
-        <button
-          aria-label="Edit"
-          class="sky-btn sky-btn-link sky-demo-btn-edit"
-          (click)="demoSettings.showForm = true"
-        >
-          <sky-icon
-            icon="pencil"
-          ></sky-icon>
-        </button>
-      </h4>
+      <table>
+        <tr>
+          <th>First name:</th>
+          <td>{{ demoSettings.firstName }}</td>
+          <td>
+            <button
+              aria-label="Edit"
+              class="sky-btn sky-btn-link sky-demo-btn-edit"
+              (click)="demoSettings.showForm = true"
+            >
+              <sky-icon
+                icon="pencil"
+              ></sky-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
     </sky-inline-form>
   </sky-docs-demo>
 
@@ -216,15 +221,15 @@
   >
     <label
       class="sky-control-label"
-      for="my-inline-form"
+      for="demo-field-first-name"
     >
-      Page title
+      First name
     </label>
     <input
-      id="input-page-title"
+      id="demo-field-first-name"
       class="sky-form-control"
       type="text"
-      [(ngModel)]="demoModel.title"
+      [(ngModel)]="demoModel.firstName"
     />
   </div>
 </ng-template>
