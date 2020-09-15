@@ -18,6 +18,8 @@ export class InlineFormDemoComponent {
     firstName?: string;
   } = { };
 
+  public firstName: string = 'Jane';
+
   public inlineFormConfig: SkyInlineFormConfig = {
     buttonLayout: SkyInlineFormButtonLayout.Custom,
     buttons: [
@@ -29,8 +31,6 @@ export class InlineFormDemoComponent {
   };
 
   public showForm: boolean = false;
-
-  public firstName: string = 'Jane';
 
   constructor() {
     this.demoModel.firstName = this.firstName;

@@ -6,18 +6,18 @@
     (inlineFormClose)="onInlineFormClose($event)"
   >
 
-    <sky-repeater-item-title>
+    <sky-repeater-item-title
+      class="demo-repeater-flex"
+    >
       <div
-        class="pull-left"
+        class="sky-emphasized"
       >
         {{ item.title }}
       </div>
-      <div
-        class="pull-right"
-      >
+      <div>
         <button
           aria-label="Edit"
-          class="sky-btn sky-btn-link sky-no-focus sky-demo-btn-edit"
+          class="sky-btn sky-btn-link sky-btn-link-inline sky-no-focus sky-demo-btn-edit"
           type="button"
           (click)="showInlineForm(item)"
         >

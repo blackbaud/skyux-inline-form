@@ -18,13 +18,13 @@ export class InlineFormDemoComponent {
     firstName?: string;
   } = { };
 
+  public firstName: string = 'Jane';
+
   public inlineFormConfig: SkyInlineFormConfig = {
     buttonLayout: SkyInlineFormButtonLayout.SaveCancel
   };
 
   public showForm: boolean = false;
-
-  public firstName: string = 'Jane';
 
   constructor() {
     this.demoModel.firstName = this.firstName;

@@ -10,7 +10,8 @@ import {
 
 @Component({
   selector: 'app-inline-form-demo',
-  templateUrl: './inline-form-demo.component.html'
+  templateUrl: './inline-form-demo.component.html',
+  styleUrls: ['./inline-form-demo.component.scss']
 })
 export class InlineFormDemoComponent {
 
