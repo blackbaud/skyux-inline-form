@@ -3,6 +3,12 @@ import {
 } from '@angular/core';
 
 import {
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+
+import {
   SkyInlineFormButtonLayout,
   SkyInlineFormCloseArgs,
   SkyInlineFormConfig
@@ -14,11 +20,9 @@ import {
 })
 export class InlineFormDemoComponent {
 
-  public demoModel: {
-    firstName?: string;
-  } = { };
-
   public firstName: string = 'Jane';
+
+  public myForm: FormGroup;
 
   public inlineFormConfig: SkyInlineFormConfig = {
     buttonLayout: SkyInlineFormButtonLayout.SaveCancel
@@ -26,16 +30,28 @@ export class InlineFormDemoComponent {
 
   public showForm: boolean = false;
 
-  constructor() {
-    this.demoModel.firstName = this.firstName;
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = this.formBuilder.group({
+      myFirstName: new FormControl()
+    });
   }
 
   public onInlineFormClose(args: SkyInlineFormCloseArgs): void {
     if (args.reason === 'save') {
-      this.firstName = this.demoModel.firstName;
+      this.firstName = this.myForm.get('myFirstName').value;
     }
 
     this.showForm = false;
+    this.myForm.patchValue({
+      myFirstName: undefined
+    });
+  }
+
+  public onInlineFormOpen(): void {
+    this.showForm = true;
+    this.myForm.patchValue({
+      myFirstName: this.firstName
+    });
   }
 
 }

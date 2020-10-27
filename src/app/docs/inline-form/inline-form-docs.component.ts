@@ -4,6 +4,12 @@ import {
 } from '@angular/core';
 
 import {
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+
+import {
   SkyDocsDemoControlPanelChange,
   SkyDocsDemoControlPanelRadioChoice
 } from '@skyux/docs-tools';
@@ -27,6 +33,8 @@ export class InlineFormDocsComponent {
     { label: 'SaveDeleteCancel', value: SkyInlineFormButtonLayout.SaveDeleteCancel }
   ];
 
+  public demoForm: FormGroup;
+
   public demoSettings: {
     firstName: string;
     inlineFormConfig: SkyInlineFormConfig;
@@ -39,12 +47,13 @@ export class InlineFormDocsComponent {
     showForm: false
   };
 
-  public demoModel: {
-    firstName?: string;
-  } = { };
-
-  constructor(private changeDetector: ChangeDetectorRef) {
-    this.demoModel.firstName = this.demoSettings.firstName;
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private formBuilder: FormBuilder
+  ) {
+    this.demoForm = this.formBuilder.group({
+      firstName: new FormControl()
+    });
   }
 
   public onDemoSelectionChange(change: SkyDocsDemoControlPanelChange): void {
@@ -55,10 +64,20 @@ export class InlineFormDocsComponent {
 
   public onInlineFormClose(args: SkyInlineFormCloseArgs): void {
     if (args.reason === 'save' || args.reason === 'done') {
-      this.demoSettings.firstName = this.demoModel.firstName;
+      this.demoSettings.firstName = this.demoForm.get('firstName').value;
     }
 
+    this.demoForm.patchValue({
+      firstName: undefined
+    });
     this.demoSettings.showForm = false;
+  }
+
+  public onInlineFormOpen(): void {
+    this.demoForm.patchValue({
+      firstName: this.demoSettings.firstName
+    });
+    this.demoSettings.showForm = true;
   }
 
 }
