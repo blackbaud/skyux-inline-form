@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 
 import {
@@ -19,7 +20,7 @@ import {
   templateUrl: './inline-form-demo.component.html',
   styleUrls: ['./inline-form-demo.component.scss']
 })
-export class InlineFormDemoComponent {
+export class InlineFormDemoComponent implements OnInit {
 
   public activeInlineFormId: string;
 
@@ -52,7 +53,9 @@ export class InlineFormDemoComponent {
 
   public myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {}
+
+  public ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       id: new FormControl(),
       title: new FormControl(),

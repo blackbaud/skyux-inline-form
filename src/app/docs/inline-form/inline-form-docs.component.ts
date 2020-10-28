@@ -1,6 +1,7 @@
 import {
   ChangeDetectorRef,
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 
 import {
@@ -24,7 +25,7 @@ import {
   selector: 'app-inline-form-docs',
   templateUrl: './inline-form-docs.component.html'
 })
-export class InlineFormDocsComponent {
+export class InlineFormDocsComponent implements OnInit {
 
   public inlineFormButtonLayoutChoices: SkyDocsDemoControlPanelRadioChoice[] = [
     { label: 'DoneCancel', value: SkyInlineFormButtonLayout.DoneCancel },
@@ -50,7 +51,9 @@ export class InlineFormDocsComponent {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
     this.demoForm = this.formBuilder.group({
       firstName: new FormControl()
     });

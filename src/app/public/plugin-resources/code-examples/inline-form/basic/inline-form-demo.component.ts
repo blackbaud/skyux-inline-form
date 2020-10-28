@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 
 import {
@@ -18,7 +19,7 @@ import {
   selector: 'app-inline-form-demo',
   templateUrl: './inline-form-demo.component.html'
 })
-export class InlineFormDemoComponent {
+export class InlineFormDemoComponent implements OnInit {
 
   public firstName: string = 'Jane';
 
@@ -30,7 +31,9 @@ export class InlineFormDemoComponent {
 
   public showForm: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {}
+
+  public ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       myFirstName: new FormControl()
     });
