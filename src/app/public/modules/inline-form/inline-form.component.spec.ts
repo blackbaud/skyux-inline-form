@@ -3,6 +3,10 @@ import {
 } from '@angular/core';
 
 import {
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+
+import {
   async,
   ComponentFixture,
   TestBed,
@@ -104,6 +108,7 @@ describe('Inline form component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        NoopAnimationsModule,
         SkyInlineFormFixtureModule
       ]
     });

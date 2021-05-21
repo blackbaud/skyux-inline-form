@@ -11,10 +11,6 @@ import {
 } from '@skyux/core';
 
 import {
-  BrowserAnimationsModule
-} from '@angular/platform-browser/animations';
-
-import {
   SkyInlineFormAdapterService
 } from './inline-form-adapter.service';
 
@@ -31,7 +27,6 @@ import {
     SkyInlineFormComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     SkyInlineFormResourcesModule
   ],
