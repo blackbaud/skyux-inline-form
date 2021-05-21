@@ -1,3 +1,7 @@
+# 5.0.0-alpha.0 (2021-05-21)
+
+- Removed `BrowserAnimationsModule` from the `imports` section of `SkyInlineFormModule` to support lazy-loading. Consumers of `SkyInlineFormModule` must now import `BrowserAnimationsModule` into their application's root module. [#47](https://github.com/blackbaud/skyux-inline-form/pull/47)
+
 # 4.1.1 (2021-03-18)
 
 - Replaced theme conditionals in templates with the new `skyThemeIf` directive. [#42](https://github.com/blackbaud/skyux-inline-form/pull/42)
