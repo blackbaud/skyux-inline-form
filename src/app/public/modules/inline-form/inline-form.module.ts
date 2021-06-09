@@ -11,10 +11,6 @@ import {
 } from '@skyux/core';
 
 import {
-  SkyInlineFormAdapterService
-} from './inline-form-adapter.service';
-
-import {
   SkyInlineFormComponent
 } from './inline-form.component';
 
@@ -34,8 +30,7 @@ import {
     SkyInlineFormComponent
   ],
   providers: [
-    SkyAppWindowRef,
-    SkyInlineFormAdapterService
+    SkyAppWindowRef
   ]
 })
 export class SkyInlineFormModule { }

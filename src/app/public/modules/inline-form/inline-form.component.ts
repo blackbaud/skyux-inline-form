@@ -59,6 +59,9 @@ import {
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    SkyInlineFormAdapterService
+  ],
   animations: [ skySlideDissolve ]
 })
 export class SkyInlineFormComponent implements OnInit, OnDestroy {
