@@ -1,7 +1,7 @@
 # 5.0.0-beta.0 (2021-07-07)
 
 - Initial beta release.
-- Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#50](https://github.com/blackbaud/skyux-indicators/pull/50)
+- Added support for `5.0.0-beta.*` versions of SKY UX component libraries. [#50](https://github.com/blackbaud/skyux-inline-form/pull/50)
 
 # 5.0.0-alpha.0 (2021-05-21)
 
