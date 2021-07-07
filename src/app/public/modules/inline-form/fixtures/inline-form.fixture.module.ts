@@ -7,12 +7,16 @@ import {
 } from '@angular/core';
 
 import {
-  SkyInlineFormFixtureComponent
-} from './inline-form.fixture';
+  SkyInlineFormForRootCompatModule
+} from '../../shared/inline-form-for-root-compat.module';
 
 import {
   SkyInlineFormModule
 } from '../inline-form.module';
+
+import {
+  SkyInlineFormFixtureComponent
+} from './inline-form.fixture';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import {
   ],
   imports: [
     CommonModule,
+    SkyInlineFormForRootCompatModule,
     SkyInlineFormModule
   ]
 })

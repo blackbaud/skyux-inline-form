@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 
 import {
-  SkyAppWindowRef
-} from '@skyux/core';
-
-import {
   SkyInlineFormComponent
 } from './inline-form.component';
+
+import {
+  SkyInlineFormForRootCompatModule
+} from '../shared/inline-form-for-root-compat.module';
 
 import {
   SkyInlineFormResourcesModule
@@ -24,13 +24,11 @@ import {
   ],
   imports: [
     CommonModule,
+    SkyInlineFormForRootCompatModule,
     SkyInlineFormResourcesModule
   ],
   exports: [
     SkyInlineFormComponent
-  ],
-  providers: [
-    SkyAppWindowRef
   ]
 })
 export class SkyInlineFormModule { }
