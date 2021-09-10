@@ -24,7 +24,7 @@ import {
 
 import {
   SkyInlineFormModule
-} from '@skyux/inline-form';
+} from 'projects/inline-form/src/public-api';
 
 import {
   SkyRepeaterModule

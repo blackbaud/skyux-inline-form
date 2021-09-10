@@ -11,12 +11,8 @@ import {
 } from './inline-form.component';
 
 import {
-  SkyInlineFormForRootCompatModule
-} from '../shared/inline-form-for-root-compat.module';
-
-import {
   SkyInlineFormResourcesModule
-} from '../shared/inline-form-resources.module';
+} from '../shared/sky-inline-form-resources.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +20,6 @@ import {
   ],
   imports: [
     CommonModule,
-    SkyInlineFormForRootCompatModule,
     SkyInlineFormResourcesModule
   ],
   exports: [

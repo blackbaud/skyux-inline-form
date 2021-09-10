@@ -13,7 +13,7 @@ import {
   SkyInlineFormButtonLayout,
   SkyInlineFormCloseArgs,
   SkyInlineFormConfig
-} from '@skyux/inline-form';
+} from 'projects/inline-form/src/public-api';
 
 @Component({
   selector: 'app-inline-form-demo',

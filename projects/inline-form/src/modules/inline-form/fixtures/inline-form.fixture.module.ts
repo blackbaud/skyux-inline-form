@@ -7,10 +7,6 @@ import {
 } from '@angular/core';
 
 import {
-  SkyInlineFormForRootCompatModule
-} from '../../shared/inline-form-for-root-compat.module';
-
-import {
   SkyInlineFormModule
 } from '../inline-form.module';
 
@@ -24,7 +20,6 @@ import {
   ],
   imports: [
     CommonModule,
-    SkyInlineFormForRootCompatModule,
     SkyInlineFormModule
   ]
 })
