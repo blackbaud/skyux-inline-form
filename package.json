@@ -27,6 +27,7 @@
     "@skyux/assets": "^5.0.0-beta.0",
     "@skyux/config": "^5.0.0-beta.1",
     "@skyux/core": "^5.0.0-beta.10",
+    "@skyux/e2e-client": "^5.0.0",
     "@skyux/forms": "^5.0.0-beta.3",
     "@skyux/i18n": "^5.0.0-beta.7",
     "@skyux/indicators": "^5.0.0-beta.4",
@@ -34,6 +35,7 @@
     "@skyux/packages": "^5.0.0-beta.65",
     "@skyux/popovers": "^5.0.0-beta.0",
     "@skyux/theme": "^5.0.0-beta.5",
+    "@skyux/tiles": "^5.0.0-beta.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
