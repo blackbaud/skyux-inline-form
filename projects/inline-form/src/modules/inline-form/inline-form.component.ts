@@ -285,10 +285,13 @@ export class SkyInlineFormComponent implements OnInit, OnDestroy {
     const buttons: SkyInlineFormButtonConfig[] = [];
 
     buttonConfigs.forEach((config: SkyInlineFormButtonConfig) => {
+      /* istanbul ignore next */
+      const styleType = config.styleType || 'default';
+
       buttons.push({
         action: config.action,
         disabled: config.disabled,
-        styleType: config.styleType || 'default',
+        styleType: styleType,
         text: config.text
       } as SkyInlineFormButtonConfig);
     });

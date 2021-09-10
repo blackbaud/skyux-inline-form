@@ -19,7 +19,7 @@ import {
 } from '@angular/platform-browser';
 
 import {
-  expect
+  expect, expectAsync
 } from '@skyux-sdk/testing';
 
 import {
@@ -352,13 +352,12 @@ describe('Inline form component', () => {
     expect(button2).not.toHaveCssClass('sky-btn-disabled');
   }));
 
-  it('should pass accessibility', async(() => {
+  it('should pass accessibility', async () => {
     component.showForm = true;
     fixture.detectChanges();
 
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(fixture.nativeElement).toBeAccessible();
-    });
-  }));
+    await fixture.whenStable()
+    fixture.detectChanges();
+    await expectAsync(fixture.nativeElement).toBeAccessible();
+  });
 });

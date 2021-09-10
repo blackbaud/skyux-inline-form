@@ -54,6 +54,7 @@ export class SkyInlineFormAdapterService {
       return false;
     }
 
+    /* istanbul ignore next */
     const hasBounds = !!(
       element.offsetWidth ||
       element.offsetHeight ||
