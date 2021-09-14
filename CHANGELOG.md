@@ -1,6 +1,6 @@
 # 5.0.0-beta.2 (2021-09-14)
 
-- Updated peer dependencies. []()
+- Updated peer dependencies. [#55](https://github.com/blackbaud/skyux-inline-form/pull/55)
 
 # 5.0.0-beta.1 (2021-09-10)
 
