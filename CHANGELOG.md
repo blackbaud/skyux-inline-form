@@ -1,3 +1,7 @@
+# 5.0.0-beta.2 (2021-09-14)
+
+- Updated peer dependencies. []()
+
 # 5.0.0-beta.1 (2021-09-10)
 
 - Migrated to Angular CLI. [#53](https://github.com/blackbaud/skyux-inline-form/pull/53)
