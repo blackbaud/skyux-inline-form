@@ -32,7 +32,8 @@
             "karmaConfig": "projects/inline-form/karma.conf.js",
             "codeCoverage": true,
             "codeCoverageExclude": [
-              "**/fixtures/**"
+              "**/fixtures/**",
+              "projects/inline-form/src/test.ts"
             ],
             "styles": [
               "@skyux/theme/css/sky.css",
