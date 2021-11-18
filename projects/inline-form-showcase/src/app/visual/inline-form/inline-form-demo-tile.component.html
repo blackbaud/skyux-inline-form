@@ -1,13 +1,8 @@
 <sky-tile>
-  <sky-tile-title>
-    Beatles songs
-  </sky-tile-title>
-  <sky-tile-summary>
-    3
-  </sky-tile-summary>
+  <sky-tile-title> Beatles songs </sky-tile-title>
+  <sky-tile-summary> 3 </sky-tile-summary>
   <sky-tile-content>
     <sky-tile-content-section *ngFor="let item of tileData">
-
       <sky-inline-form
         [showForm]="activeItemId === item.id"
         [template]="tileForm"
@@ -21,11 +16,7 @@
           class="sky-btn sky-btn-link sky-no-focus"
           (click)="activeItemId = item.id"
         >
-          <sky-icon
-            aria-label="Edit"
-            icon="pencil"
-          >
-          </sky-icon>
+          <sky-icon aria-label="Edit" icon="pencil"> </sky-icon>
         </button>
       </sky-inline-form>
 
@@ -35,12 +26,7 @@
             'sky-margin-stacked-lg': 'modern'
           }"
         >
-          <label
-            class="sky-control-label"
-            for="demo-input-3"
-          >
-            Title
-          </label>
+          <label class="sky-control-label" for="demo-input-3"> Title </label>
           <input
             id="demo-input-3"
             class="sky-form-control"
@@ -49,12 +35,7 @@
           />
         </sky-input-box>
         <sky-input-box>
-          <label
-            class="sky-control-label"
-            for="demo-input-4"
-          >
-            Note
-          </label>
+          <label class="sky-control-label" for="demo-input-4"> Note </label>
           <input
             id="demo-input-4"
             class="sky-form-control"
@@ -63,7 +44,6 @@
           />
         </sky-input-box>
       </ng-template>
-
     </sky-tile-content-section>
   </sky-tile-content>
 </sky-tile>

@@ -1,22 +1,17 @@
-import {
-  ChangeDetectionStrategy,
-  Component
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import {
-  SkyTileDemoTileComponent
-} from './inline-form-demo-tile.component';
+import { SkyTileDemoTileComponent } from './inline-form-demo-tile.component';
 
 import {
   SkyInlineFormButtonLayout,
-  SkyInlineFormConfig
+  SkyInlineFormConfig,
 } from 'projects/inline-form/src/public-api';
 
 @Component({
   selector: 'app-inline-form-demo',
   templateUrl: './inline-form-demo.component.html',
   styleUrls: ['./inline-form-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkyInlineFormDemoComponent {
   public showInlineForm1 = false;
@@ -24,46 +19,54 @@ export class SkyInlineFormDemoComponent {
   public showInlineForm3 = false;
 
   public editConfig: SkyInlineFormConfig = {
-    buttonLayout: SkyInlineFormButtonLayout.SaveDeleteCancel
+    buttonLayout: SkyInlineFormButtonLayout.SaveDeleteCancel,
   };
 
   public customConfig: SkyInlineFormConfig = {
     buttonLayout: SkyInlineFormButtonLayout.Custom,
     buttons: [
       { action: 'save', text: 'Do it!', styleType: 'primary' },
-      { action: 'done', text: 'Don\'t let your dreams be dreams.', styleType: 'default' },
-      { action: 'cancel', text: 'Yesterday, you said tomorrow.', styleType: 'link' },
-      { action: 'save', text: 'Just do it! ', styleType: 'primary' }
-    ]
+      {
+        action: 'done',
+        text: "Don't let your dreams be dreams.",
+        styleType: 'default',
+      },
+      {
+        action: 'cancel',
+        text: 'Yesterday, you said tomorrow.',
+        styleType: 'link',
+      },
+      { action: 'save', text: 'Just do it! ', styleType: 'primary' },
+    ],
   };
 
   public dashboardConfig = {
     tiles: [
       {
         id: 'tile1',
-        componentType: SkyTileDemoTileComponent
-      }
+        componentType: SkyTileDemoTileComponent,
+      },
     ],
     layout: {
       singleColumn: {
         tiles: [
           {
             id: 'tile1',
-            isCollapsed: false
-          }
-        ]
+            isCollapsed: false,
+          },
+        ],
       },
       multiColumn: [
         {
           tiles: [
             {
               id: 'tile1',
-              isCollapsed: false
-            }
-          ]
-        }
-      ]
-    }
+              isCollapsed: false,
+            },
+          ],
+        },
+      ],
+    },
   };
 
   public onClose(event: any): void {
@@ -77,9 +80,9 @@ export class SkyInlineFormDemoComponent {
         {
           action: 'cancel',
           styleType: 'link',
-          text: 'Yesterday, you said tomorrow.'
-        }
-      ]
+          text: 'Yesterday, you said tomorrow.',
+        },
+      ],
     };
   }
 
@@ -88,8 +91,8 @@ export class SkyInlineFormDemoComponent {
       buttonLayout: SkyInlineFormButtonLayout.Custom,
       buttons: [
         { action: 'save', text: 'Save', styleType: 'primary', disabled: true },
-        { action: 'cancel', text: 'Cancel', styleType: 'link' }
-      ]
+        { action: 'cancel', text: 'Cancel', styleType: 'link' },
+      ],
     };
   }
 }
