@@ -1,18 +1,11 @@
-<div
-  style="padding: 10px;"
->
-  <label
-    class=“sky-control-label”
-  >
+<div style="padding: 10px">
+  <label class="“sky-control-label”">
     Theme:
     <sky-e2e-theme-selector></sky-e2e-theme-selector>
   </label>
 </div>
 
-<div
-  class="sky-inline-form-demo"
->
-
+<div class="sky-inline-form-demo">
   <h2>"Add" mode (default)</h2>
 
   <sky-inline-form
@@ -25,38 +18,18 @@
     <p>My note</p>
   </sky-inline-form>
 
-  <ng-template
-    #addForm
-  >
+  <ng-template #addForm>
     <sky-input-box
       [skyThemeClass]="{
         'sky-margin-stacked-lg': 'modern'
       }"
     >
-      <label
-        class="sky-control-label"
-        for="demo-input-1"
-      >
-        Title
-      </label>
-      <input
-        id="demo-input-1"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-1"> Title </label>
+      <input id="demo-input-1" class="sky-form-control" type="text" />
     </sky-input-box>
     <sky-input-box>
-      <label
-        class="sky-control-label"
-        for="demo-input-2"
-      >
-        Note
-      </label>
-      <input
-        id="demo-input-2"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-2"> Note </label>
+      <input id="demo-input-2" class="sky-form-control" type="text" />
     </sky-input-box>
   </ng-template>
 
@@ -73,38 +46,18 @@
     <p>My note</p>
   </sky-inline-form>
 
-  <ng-template
-    #editForm
-  >
+  <ng-template #editForm>
     <sky-input-box
       [skyThemeClass]="{
         'sky-margin-stacked-lg': 'modern'
       }"
     >
-      <label
-        class="sky-control-label"
-        for="demo-input-3"
-      >
-        Title
-      </label>
-      <input
-        id="demo-input-3"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-3"> Title </label>
+      <input id="demo-input-3" class="sky-form-control" type="text" />
     </sky-input-box>
     <sky-input-box>
-      <label
-        class="sky-control-label"
-        for="demo-input-4"
-      >
-        Note
-      </label>
-      <input
-        id="demo-input-4"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-4"> Note </label>
+      <input id="demo-input-4" class="sky-form-control" type="text" />
     </sky-input-box>
   </ng-template>
 
@@ -121,64 +74,32 @@
     <p>My note</p>
   </sky-inline-form>
 
-  <ng-template
-    #customForm
-  >
+  <ng-template #customForm>
     <sky-input-box
       [skyThemeClass]="{
         'sky-margin-stacked-lg': 'modern'
       }"
     >
-      <label
-        class="sky-control-label"
-        for="demo-input-3"
-      >
-        Title
-      </label>
-      <input
-        id="demo-input-3"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-3"> Title </label>
+      <input id="demo-input-3" class="sky-form-control" type="text" />
     </sky-input-box>
     <sky-input-box>
-      <label
-        class="sky-control-label"
-        for="demo-input-4"
-      >
-        Note
-      </label>
-      <input
-        id="demo-input-4"
-        class="sky-form-control"
-        type="text"
-      />
+      <label class="sky-control-label" for="demo-input-4"> Note </label>
+      <input id="demo-input-4" class="sky-form-control" type="text" />
     </sky-input-box>
   </ng-template>
 
   <p>
-    <button
-      class="sky-btn"
-      type="button"
-      (click)="onChangeButtonConfigClick()"
-    >
+    <button class="sky-btn" type="button" (click)="onChangeButtonConfigClick()">
       Change button config
     </button>
-    <button
-      class="sky-btn"
-      type="button"
-      (click)="onDisableButtonClick()"
-    >
+    <button class="sky-btn" type="button" (click)="onDisableButtonClick()">
       Show disabled save button
     </button>
   </p>
 
   <h2>Tile section example</h2>
 
-  <sky-tile-dashboard
-    id="inline-form-tiles"
-    [(config)]="dashboardConfig"
-  >
+  <sky-tile-dashboard id="inline-form-tiles" [(config)]="dashboardConfig">
   </sky-tile-dashboard>
-
 </div>

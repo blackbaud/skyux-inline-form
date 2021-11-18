@@ -8,20 +8,14 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "inline-form": [
-        "dist/inline-form/inline-form",
-        "dist/inline-form"
-      ]
+      "inline-form": ["dist/inline-form/inline-form", "dist/inline-form"]
     },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

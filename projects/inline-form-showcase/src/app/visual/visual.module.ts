@@ -8,20 +8,18 @@ import { SkyTilesModule } from '@skyux/tiles';
 import { SkyInlineFormModule } from 'projects/inline-form/src/public-api';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     SkyInlineFormDemoComponent,
     SkyTileDemoTileComponent,
-    VisualComponent
+    VisualComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     SkyE2eThemeSelectorModule,
     SkyInlineFormModule,
-    SkyTilesModule
-  ]
+    SkyTilesModule,
+  ],
 })
-export class VisualModule { }
+export class VisualModule {}

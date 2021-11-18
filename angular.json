@@ -10,7 +10,7 @@
       "prefix": "sky",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@skyux-sdk/angular-builders:ng-packagr",
           "options": {
             "project": "projects/inline-form/ng-package.json"
           },
@@ -168,9 +168,7 @@
               "projects/inline-form-showcase/src/favicon.ico",
               "projects/inline-form-showcase/src/assets"
             ],
-            "styles": [
-              "projects/inline-form-showcase/src/styles.scss"
-            ],
+            "styles": ["projects/inline-form-showcase/src/styles.scss"],
             "scripts": []
           }
         },

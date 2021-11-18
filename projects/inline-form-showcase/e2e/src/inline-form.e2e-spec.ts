@@ -1,14 +1,6 @@
-import {
-  expect,
-  SkyHostBrowser,
-  SkyVisualThemeSelector
-} from '@skyux-sdk/e2e';
+import { expect, SkyHostBrowser, SkyVisualThemeSelector } from '@skyux-sdk/e2e';
 
-import {
-  by,
-  element,
-  browser
-} from 'protractor';
+import { by, element, browser } from 'protractor';
 
 describe('Inline form', () => {
   let currentTheme: string;
@@ -34,12 +26,11 @@ describe('Inline form', () => {
   }
 
   function runTests(): void {
-
     it('should match previous screenshot for add mode', async (done) => {
       await SkyHostBrowser.scrollTo('#inline-form-add');
 
       expect('#inline-form-add').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-add')
+        screenshotName: getScreenshotName('inline-form-add'),
       });
     });
 
@@ -48,7 +39,7 @@ describe('Inline form', () => {
       await SkyHostBrowser.scrollTo('#inline-form-add');
 
       expect('#inline-form-add').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-add-xs')
+        screenshotName: getScreenshotName('inline-form-add-xs'),
       });
     });
 
@@ -56,7 +47,7 @@ describe('Inline form', () => {
       await SkyHostBrowser.scrollTo('#inline-form-edit');
 
       expect('#inline-form-edit').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-edit')
+        screenshotName: getScreenshotName('inline-form-edit'),
       });
     });
 
@@ -65,7 +56,7 @@ describe('Inline form', () => {
       await SkyHostBrowser.scrollTo('#inline-form-edit');
 
       expect('#inline-form-edit').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-edit-xs')
+        screenshotName: getScreenshotName('inline-form-edit-xs'),
       });
     });
 
@@ -77,7 +68,7 @@ describe('Inline form', () => {
       await browser.sleep(500);
 
       expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-tiles')
+        screenshotName: getScreenshotName('inline-form-tiles'),
       });
     });
 
@@ -90,7 +81,7 @@ describe('Inline form', () => {
       await browser.sleep(500);
 
       expect('#inline-form-tiles').toMatchBaselineScreenshot(done, {
-        screenshotName: getScreenshotName('inline-form-tiles-xs')
+        screenshotName: getScreenshotName('inline-form-tiles-xs'),
       });
     });
   }
